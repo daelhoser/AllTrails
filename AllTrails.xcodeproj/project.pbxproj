@@ -13,7 +13,7 @@
 		5FEE524E273BFF88002C6A36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FEE524C273BFF88002C6A36 /* Main.storyboard */; };
 		5FEE5250273BFF8A002C6A36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FEE524F273BFF8A002C6A36 /* Assets.xcassets */; };
 		5FEE5253273BFF8A002C6A36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FEE5251273BFF8A002C6A36 /* LaunchScreen.storyboard */; };
-		5FEE525E273BFF8A002C6A36 /* RemotePlaceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE525D273BFF8A002C6A36 /* RemotePlaceLoader.swift */; };
+		5FEE525E273BFF8A002C6A36 /* RemotePlaceLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE525D273BFF8A002C6A36 /* RemotePlaceLoaderTests.swift */; };
 		5FEE5278273C02BF002C6A36 /* PlaceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE5277273C02BF002C6A36 /* PlaceLoader.swift */; };
 		5FEE527A273C0661002C6A36 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE5279273C0661002C6A36 /* Request.swift */; };
 		5FEE527C273C0676002C6A36 /* LocationCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE527B273C0676002C6A36 /* LocationCoordinate.swift */; };
@@ -41,7 +41,7 @@
 		5FEE5252273BFF8A002C6A36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5FEE5254273BFF8A002C6A36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5FEE5259273BFF8A002C6A36 /* AllTrailsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AllTrailsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5FEE525D273BFF8A002C6A36 /* RemotePlaceLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePlaceLoader.swift; sourceTree = "<group>"; };
+		5FEE525D273BFF8A002C6A36 /* RemotePlaceLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePlaceLoaderTests.swift; sourceTree = "<group>"; };
 		5FEE525F273BFF8A002C6A36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5FEE5277273C02BF002C6A36 /* PlaceLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceLoader.swift; sourceTree = "<group>"; };
 		5FEE5279273C0661002C6A36 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 		5FEE525C273BFF8A002C6A36 /* AllTrailsTests */ = {
 			isa = PBXGroup;
 			children = (
-				5FEE525D273BFF8A002C6A36 /* RemotePlaceLoader.swift */,
+				5FEE525D273BFF8A002C6A36 /* RemotePlaceLoaderTests.swift */,
 				5FEE525F273BFF8A002C6A36 /* Info.plist */,
 			);
 			path = AllTrailsTests;
@@ -245,7 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FEE525E273BFF8A002C6A36 /* RemotePlaceLoader.swift in Sources */,
+				5FEE525E273BFF8A002C6A36 /* RemotePlaceLoaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
