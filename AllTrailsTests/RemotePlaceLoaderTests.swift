@@ -19,7 +19,7 @@ class RemotePlaceLoader: PlaceLoader {
         self.client = client
     }
     
-    func load(with request: Request, completion: @escaping (Result<[Place], Swift.Error>) -> Void) {
+    func load(with request: Request, completion: @escaping (PlaceLoader.Result) -> Void) {
         client.request { _ in
             completion(.failure(Error.networkError))
         }

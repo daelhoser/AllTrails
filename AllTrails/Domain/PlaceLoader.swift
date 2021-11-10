@@ -8,5 +8,6 @@
 import Foundation
 
 protocol PlaceLoader {
-    func load(with request: Request, completion: @escaping (Result<[Place], Error>) -> Void)
+    typealias Result = Swift.Result<[Place], Error>
+    func load(with request: Request, completion: @escaping (Result) -> Void)
 }
