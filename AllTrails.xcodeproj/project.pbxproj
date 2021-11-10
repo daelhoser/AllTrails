@@ -14,18 +14,10 @@
 		5FEE5250273BFF8A002C6A36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FEE524F273BFF8A002C6A36 /* Assets.xcassets */; };
 		5FEE5253273BFF8A002C6A36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FEE5251273BFF8A002C6A36 /* LaunchScreen.storyboard */; };
 		5FEE525E273BFF8A002C6A36 /* AllTrailsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE525D273BFF8A002C6A36 /* AllTrailsTests.swift */; };
-		5FEE5269273BFF8A002C6A36 /* AllTrailsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE5268273BFF8A002C6A36 /* AllTrailsUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		5FEE525A273BFF8A002C6A36 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5FEE523B273BFF88002C6A36 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5FEE5242273BFF88002C6A36;
-			remoteInfo = AllTrails;
-		};
-		5FEE5265273BFF8A002C6A36 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5FEE523B273BFF88002C6A36 /* Project object */;
 			proxyType = 1;
@@ -46,9 +38,6 @@
 		5FEE5259273BFF8A002C6A36 /* AllTrailsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AllTrailsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FEE525D273BFF8A002C6A36 /* AllTrailsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTrailsTests.swift; sourceTree = "<group>"; };
 		5FEE525F273BFF8A002C6A36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5FEE5264273BFF8A002C6A36 /* AllTrailsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AllTrailsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5FEE5268273BFF8A002C6A36 /* AllTrailsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTrailsUITests.swift; sourceTree = "<group>"; };
-		5FEE526A273BFF8A002C6A36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,13 +55,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5FEE5261273BFF8A002C6A36 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -81,7 +63,6 @@
 			children = (
 				5FEE5245273BFF88002C6A36 /* AllTrails */,
 				5FEE525C273BFF8A002C6A36 /* AllTrailsTests */,
-				5FEE5267273BFF8A002C6A36 /* AllTrailsUITests */,
 				5FEE5244273BFF88002C6A36 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -91,7 +72,6 @@
 			children = (
 				5FEE5243273BFF88002C6A36 /* AllTrails.app */,
 				5FEE5259273BFF8A002C6A36 /* AllTrailsTests.xctest */,
-				5FEE5264273BFF8A002C6A36 /* AllTrailsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,15 +97,6 @@
 				5FEE525F273BFF8A002C6A36 /* Info.plist */,
 			);
 			path = AllTrailsTests;
-			sourceTree = "<group>";
-		};
-		5FEE5267273BFF8A002C6A36 /* AllTrailsUITests */ = {
-			isa = PBXGroup;
-			children = (
-				5FEE5268273BFF8A002C6A36 /* AllTrailsUITests.swift */,
-				5FEE526A273BFF8A002C6A36 /* Info.plist */,
-			);
-			path = AllTrailsUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,24 +137,6 @@
 			productReference = 5FEE5259273BFF8A002C6A36 /* AllTrailsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		5FEE5263273BFF8A002C6A36 /* AllTrailsUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5FEE5273273BFF8A002C6A36 /* Build configuration list for PBXNativeTarget "AllTrailsUITests" */;
-			buildPhases = (
-				5FEE5260273BFF8A002C6A36 /* Sources */,
-				5FEE5261273BFF8A002C6A36 /* Frameworks */,
-				5FEE5262273BFF8A002C6A36 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5FEE5266273BFF8A002C6A36 /* PBXTargetDependency */,
-			);
-			name = AllTrailsUITests;
-			productName = AllTrailsUITests;
-			productReference = 5FEE5264273BFF8A002C6A36 /* AllTrailsUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -197,10 +150,6 @@
 						CreatedOnToolsVersion = 12.5.1;
 					};
 					5FEE5258273BFF8A002C6A36 = {
-						CreatedOnToolsVersion = 12.5.1;
-						TestTargetID = 5FEE5242273BFF88002C6A36;
-					};
-					5FEE5263273BFF8A002C6A36 = {
 						CreatedOnToolsVersion = 12.5.1;
 						TestTargetID = 5FEE5242273BFF88002C6A36;
 					};
@@ -221,7 +170,6 @@
 			targets = (
 				5FEE5242273BFF88002C6A36 /* AllTrails */,
 				5FEE5258273BFF8A002C6A36 /* AllTrailsTests */,
-				5FEE5263273BFF8A002C6A36 /* AllTrailsUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -238,13 +186,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		5FEE5257273BFF8A002C6A36 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5FEE5262273BFF8A002C6A36 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -272,14 +213,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5FEE5260273BFF8A002C6A36 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5FEE5269273BFF8A002C6A36 /* AllTrailsUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -287,11 +220,6 @@
 			isa = PBXTargetDependency;
 			target = 5FEE5242273BFF88002C6A36 /* AllTrails */;
 			targetProxy = 5FEE525A273BFF8A002C6A36 /* PBXContainerItemProxy */;
-		};
-		5FEE5266273BFF8A002C6A36 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5FEE5242273BFF88002C6A36 /* AllTrails */;
-			targetProxy = 5FEE5265273BFF8A002C6A36 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -513,56 +441,6 @@
 			};
 			name = Release;
 		};
-		5FEE5274273BFF8A002C6A36 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BV8HVD6H7Z;
-				INFOPLIST_FILE = AllTrailsUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = iosApp.AllTrailsUITests;
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = AllTrails;
-			};
-			name = Debug;
-		};
-		5FEE5275273BFF8A002C6A36 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BV8HVD6H7Z;
-				INFOPLIST_FILE = AllTrailsUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = iosApp.AllTrailsUITests;
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = AllTrails;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -589,15 +467,6 @@
 			buildConfigurations = (
 				5FEE5271273BFF8A002C6A36 /* Debug */,
 				5FEE5272273BFF8A002C6A36 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5FEE5273273BFF8A002C6A36 /* Build configuration list for PBXNativeTarget "AllTrailsUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5FEE5274273BFF8A002C6A36 /* Debug */,
-				5FEE5275273BFF8A002C6A36 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
