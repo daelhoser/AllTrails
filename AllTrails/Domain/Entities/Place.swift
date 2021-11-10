@@ -8,6 +8,7 @@
 import Foundation
 
 struct Place {
+    let id: String
     let name: String
     let rating: Double
     let numberOfRatings: Int
