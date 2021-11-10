@@ -23,22 +23,30 @@ class RemotePlaceLoader: PlaceLoader {
 class RemotePlaceLoaderTests: XCTestCase {
 
     func test_onInit_doesNotLoadPlaces() {
-        let spy = HttpClientSpy()
-        _ = RemotePlaceLoader(client: spy)
+        let (spy, _) = makeSUT()
         
         XCTAssertEqual(spy.requests, 0)
     }
 
     func test_load_requestsDataFromURL() {
-        let spy = HttpClientSpy()
-        let loader = RemotePlaceLoader(client: spy)
-        
+        let (spy, loader) = makeSUT()
+
         let anyRequest = Request(keyword: nil, coordinates: LocationCoordinate(latitude: 0, longitude: 0), radius: 0, type: "a string")
         
         loader.load(with: anyRequest) { _ in}
         
         XCTAssertEqual(spy.requests, 1)
     }
+    
+    // MARK: - Helper Methods
+    
+    private func makeSUT() -> (spy: HttpClientSpy, sut: PlaceLoader) {
+        let spy = HttpClientSpy()
+        let sut = RemotePlaceLoader(client: spy)
+        
+        return (spy, sut)
+    }
+
 }
 
 class HttpClientSpy {
