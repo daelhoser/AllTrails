@@ -31,9 +31,8 @@ class RemotePlaceLoaderTests: XCTestCase {
     func test_load_requestsDataFromURL() {
         let (spy, loader) = makeSUT()
 
-        let anyRequest = Request(keyword: nil, coordinates: LocationCoordinate(latitude: 0, longitude: 0), radius: 0, type: "a string")
         
-        loader.load(with: anyRequest) { _ in}
+        loader.load(with: anyRequest()) { _ in}
         
         XCTAssertEqual(spy.requests, 1)
     }
@@ -41,10 +40,9 @@ class RemotePlaceLoaderTests: XCTestCase {
     func test_load_twice_requestsDataFromURLTwice() {
         let (spy, loader) = makeSUT()
 
-        let anyRequest = Request(keyword: nil, coordinates: LocationCoordinate(latitude: 0, longitude: 0), radius: 0, type: "a string")
         
-        loader.load(with: anyRequest) { _ in}
-        loader.load(with: anyRequest) { _ in}
+        loader.load(with: anyRequest()) { _ in}
+        loader.load(with: anyRequest()) { _ in}
 
         XCTAssertEqual(spy.requests, 2)
     }
@@ -56,6 +54,10 @@ class RemotePlaceLoaderTests: XCTestCase {
         let sut = RemotePlaceLoader(client: spy)
         
         return (spy, sut)
+    }
+    
+    private func anyRequest() -> Request {
+        Request(keyword: nil, coordinates: LocationCoordinate(latitude: 0, longitude: 0), radius: 0, type: "a string")
     }
 
 }
