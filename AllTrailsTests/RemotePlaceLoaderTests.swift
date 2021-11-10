@@ -59,52 +59,21 @@ class RemotePlaceLoaderTests: XCTestCase {
     func test_load_returnsErrorOnHttpClientError() {
         let (spy, loader) = makeSUT()
 
-        let exp = expectation(description: "wait on load")
-        var capturedError: Error?
-        
-        loader.load(with: anyRequest()) { result in
-            switch result {
-            case .success:
-                XCTFail("Expected a failure, received success instead")
-            case let .failure(error):
-                capturedError = error
-            }
-            exp.fulfill()
+        expect(when: loader, toCompleteWith: .failure(RemotePlaceLoader.Error.networkError)) {
+            let anyError = NSError(domain: "any-error", code: 0)
+            spy.completeWithError(anyError)
         }
-        
-        let anyError = NSError(domain: "any-error", code: 0)
-        spy.completeWithError(anyError)
-
-        wait(for: [exp], timeout: 1.0)
-        
-        XCTAssertEqual(capturedError as! RemotePlaceLoader.Error, RemotePlaceLoader.Error.networkError)
     }
     
     func test_load_returnsErrorOnNon200HTTPURLResponse() {
         let (spy, loader) = makeSUT()
         
-        
-        let sampleStatusCodes = [500, 400, 200, 10]
+        let sampleStatusCodes = [500, 400, 199, 201, 10]
         
         for (index, status) in sampleStatusCodes.enumerated() {
-            let exp = expectation(description: "wait on load")
-            var capturedError: Error?
-
-            loader.load(with: anyRequest()) { result in
-                switch result {
-                case .success:
-                    XCTFail("Expected a failure, received success instead")
-                case let .failure(error):
-                    capturedError = error
-                }
-                exp.fulfill()
+            expect(when: loader, toCompleteWith: .failure(RemotePlaceLoader.Error.invalidResponse)) {
+                spy.completeWithStatus(code: status, at: index)
             }
-
-            spy.completeWithStatus(code: status, at: index)
-            
-            wait(for: [exp], timeout: 1.0)
-
-            XCTAssertEqual(capturedError as! RemotePlaceLoader.Error, RemotePlaceLoader.Error.invalidResponse)
         }
     }
     
@@ -119,6 +88,19 @@ class RemotePlaceLoaderTests: XCTestCase {
     
     private func anyRequest() -> Request {
         Request(keyword: nil, coordinates: LocationCoordinate(latitude: 0, longitude: 0), radius: 0, type: "a string")
+    }
+    
+    private func expect(when sut: PlaceLoader, toCompleteWith expectedResult: RemotePlaceLoader.Result, when action: () -> Void) {
+        sut.load(with: anyRequest()) { result in
+            switch (result, expectedResult) {
+            case (let .failure(error), let .failure(expectedError)):
+                XCTAssertEqual(error as! RemotePlaceLoader.Error, expectedError as! RemotePlaceLoader.Error, "Expected \(error) but received \(expectedError) instead")
+            default:
+                XCTFail("Expected \(expectedResult) but received \(result) instead")
+            }
+        }
+        
+        action()
     }
 }
 
