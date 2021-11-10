@@ -13,6 +13,7 @@ class RemotePlaceLoader: PlaceLoader {
     
     enum Error: Swift.Error, Equatable {
         case networkError
+        case invalidResponse
     }
 
     init(client: HttpClientSpy) {
@@ -20,8 +21,12 @@ class RemotePlaceLoader: PlaceLoader {
     }
     
     func load(with request: Request, completion: @escaping (PlaceLoader.Result) -> Void) {
-        client.request { _ in
-            completion(.failure(Error.networkError))
+        client.request { _,_,error  in
+            if let error = error {
+                completion(.failure(Error.networkError))
+            } else {
+                completion(.failure(Error.invalidResponse))
+            }
         }
     }
 }
@@ -75,6 +80,34 @@ class RemotePlaceLoaderTests: XCTestCase {
         XCTAssertEqual(capturedError as! RemotePlaceLoader.Error, RemotePlaceLoader.Error.networkError)
     }
     
+    func test_load_returnsErrorOnNon200HTTPURLResponse() {
+        let (spy, loader) = makeSUT()
+        
+        
+        let sampleStatusCodes = [500, 400, 200, 10]
+        
+        for (index, status) in sampleStatusCodes.enumerated() {
+            let exp = expectation(description: "wait on load")
+            var capturedError: Error?
+
+            loader.load(with: anyRequest()) { result in
+                switch result {
+                case .success:
+                    XCTFail("Expected a failure, received success instead")
+                case let .failure(error):
+                    capturedError = error
+                }
+                exp.fulfill()
+            }
+
+            spy.completeWithStatus(code: status, at: index)
+            
+            wait(for: [exp], timeout: 1.0)
+
+            XCTAssertEqual(capturedError as! RemotePlaceLoader.Error, RemotePlaceLoader.Error.invalidResponse)
+        }
+    }
+    
     // MARK: - Helper Methods
     
     private func makeSUT() -> (spy: HttpClientSpy, sut: PlaceLoader) {
@@ -94,13 +127,20 @@ class HttpClientSpy {
         completions.count
     }
     
-    private var completions = [(Error) -> Void]()
+    private var completions = [(Data?, URLResponse?, Error?) -> Void]()
     
-    func request(completion: @escaping (Error) -> Void) {
+    func request(completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
         completions.append(completion)
     }
     
     func completeWithError(_ error: NSError, at index: Int = 0) {
-        completions[index](error)
+        completions[index](nil, nil, error)
+    }
+    
+    func completeWithStatus(code: Int, at index: Int = 0) {
+        let anyURL = URL(string: "any-url.com")!
+        let urlResponse = HTTPURLResponse(url: anyURL, statusCode: code, httpVersion: nil, headerFields: nil)
+        
+        completions[index](nil, urlResponse, nil)
     }
 }
