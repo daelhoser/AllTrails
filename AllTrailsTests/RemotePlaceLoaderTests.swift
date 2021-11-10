@@ -38,6 +38,17 @@ class RemotePlaceLoaderTests: XCTestCase {
         XCTAssertEqual(spy.requests, 1)
     }
     
+    func test_load_twice_requestsDataFromURLTwice() {
+        let (spy, loader) = makeSUT()
+
+        let anyRequest = Request(keyword: nil, coordinates: LocationCoordinate(latitude: 0, longitude: 0), radius: 0, type: "a string")
+        
+        loader.load(with: anyRequest) { _ in}
+        loader.load(with: anyRequest) { _ in}
+
+        XCTAssertEqual(spy.requests, 2)
+    }
+    
     // MARK: - Helper Methods
     
     private func makeSUT() -> (spy: HttpClientSpy, sut: PlaceLoader) {
