@@ -14,6 +14,7 @@
 		5FEE5250273BFF8A002C6A36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FEE524F273BFF8A002C6A36 /* Assets.xcassets */; };
 		5FEE5253273BFF8A002C6A36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FEE5251273BFF8A002C6A36 /* LaunchScreen.storyboard */; };
 		5FEE525E273BFF8A002C6A36 /* AllTrailsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE525D273BFF8A002C6A36 /* AllTrailsTests.swift */; };
+		5FEE5278273C02BF002C6A36 /* PlaceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE5277273C02BF002C6A36 /* PlaceLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		5FEE5259273BFF8A002C6A36 /* AllTrailsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AllTrailsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FEE525D273BFF8A002C6A36 /* AllTrailsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTrailsTests.swift; sourceTree = "<group>"; };
 		5FEE525F273BFF8A002C6A36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FEE5277273C02BF002C6A36 /* PlaceLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		5FEE5245273BFF88002C6A36 /* AllTrails */ = {
 			isa = PBXGroup;
 			children = (
+				5FEE5276273C0297002C6A36 /* Domain */,
 				5FEE5246273BFF88002C6A36 /* AppDelegate.swift */,
 				5FEE5248273BFF88002C6A36 /* SceneDelegate.swift */,
 				5FEE524A273BFF88002C6A36 /* ViewController.swift */,
@@ -97,6 +100,14 @@
 				5FEE525F273BFF8A002C6A36 /* Info.plist */,
 			);
 			path = AllTrailsTests;
+			sourceTree = "<group>";
+		};
+		5FEE5276273C0297002C6A36 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				5FEE5277273C02BF002C6A36 /* PlaceLoader.swift */,
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FEE5278273C02BF002C6A36 /* PlaceLoader.swift in Sources */,
 				5FEE524B273BFF88002C6A36 /* ViewController.swift in Sources */,
 				5FEE5247273BFF88002C6A36 /* AppDelegate.swift in Sources */,
 				5FEE5249273BFF88002C6A36 /* SceneDelegate.swift in Sources */,
