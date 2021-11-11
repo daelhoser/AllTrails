@@ -171,16 +171,20 @@ class RemotePlaceLoaderTests: XCTestCase {
     
     // MARK: - Helper Methods
     
-    private func makeSUT() -> (spy: HttpClientSpy, sut: PlaceLoader) {
+    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (spy: HttpClientSpy, sut: PlaceLoader) {
         let spy = HttpClientSpy()
         let sut = RemotePlaceLoader(client: spy)
         
-        addTeardownBlock { [weak spy, weak sut] in
-            XCTAssertNil(spy, "expected nil, potential memory leak")
-            XCTAssertNil(sut, "expected nil, potential memory leak")
-        }
+        trackMemoryLeaks(for: spy, file: file, line: line)
+        trackMemoryLeaks(for: sut, file: file, line: line)
         
         return (spy, sut)
+    }
+    
+    private func trackMemoryLeaks(for object: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
+        addTeardownBlock { [weak object] in
+            XCTAssertNil(object, "expected nil, potential memory leak")
+        }
     }
     
     private func anyRequest() -> Request {
