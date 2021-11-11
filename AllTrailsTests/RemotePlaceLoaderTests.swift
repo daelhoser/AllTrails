@@ -50,7 +50,9 @@ class RemotePlaceLoader: PlaceLoader {
     }
     
     func load(with request: Request, completion: @escaping (PlaceLoader.Result) -> Void) {
-        client.request { data, response, error  in
+        client.request { [weak self] (data, response, error)  in
+            guard let self = self else { return }
+            
             if  error != nil {
                 completion(.failure(Error.networkError))
                 return
@@ -177,6 +179,11 @@ class RemotePlaceLoaderTests: XCTestCase {
     private func makeSUT() -> (spy: HttpClientSpy, sut: PlaceLoader) {
         let spy = HttpClientSpy()
         let sut = RemotePlaceLoader(client: spy)
+        
+        addTeardownBlock { [weak spy, weak sut] in
+            XCTAssertNil(spy, "expected nil, potential memory leak")
+            XCTAssertNil(sut, "expected nil, potential memory leak")
+        }
         
         return (spy, sut)
     }
