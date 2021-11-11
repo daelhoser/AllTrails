@@ -21,12 +21,18 @@ class RemotePlaceLoader: PlaceLoader {
     }
     
     func load(with request: Request, completion: @escaping (PlaceLoader.Result) -> Void) {
-        client.request { _,_,error  in
-            if let error = error {
+        client.request { data, response, error  in
+            if  error != nil {
                 completion(.failure(Error.networkError))
-            } else {
-                completion(.failure(Error.invalidResponse))
+                return
             }
+            
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completion(.failure(Error.invalidResponse))
+                return
+            }
+            
+            completion(.success([]))
         }
     }
 }
@@ -77,6 +83,16 @@ class RemotePlaceLoaderTests: XCTestCase {
         }
     }
     
+    func test_load_returnsEmptyArrayOnInvalidJSON() {
+        let (spy, loader) = makeSUT()
+
+        expect(when: loader, toCompleteWith: .success([])) {
+            let invalidJSON = "invalid JSON".data(using: .utf8)!
+            
+            spy.completeWithStatus(code: 200, data: invalidJSON)
+        }
+    }
+    
     // MARK: - Helper Methods
     
     private func makeSUT() -> (spy: HttpClientSpy, sut: PlaceLoader) {
@@ -93,6 +109,8 @@ class RemotePlaceLoaderTests: XCTestCase {
     private func expect(when sut: PlaceLoader, toCompleteWith expectedResult: RemotePlaceLoader.Result, when action: () -> Void) {
         sut.load(with: anyRequest()) { result in
             switch (result, expectedResult) {
+            case (let .success(places), let .success(expectedPlaces)):
+                XCTAssertEqual(places, expectedPlaces, "Expected \(expectedPlaces) but received \(places) instead")
             case (let .failure(error), let .failure(expectedError)):
                 XCTAssertEqual(error as! RemotePlaceLoader.Error, expectedError as! RemotePlaceLoader.Error, "Expected \(error) but received \(expectedError) instead")
             default:
@@ -119,10 +137,10 @@ class HttpClientSpy {
         completions[index](nil, nil, error)
     }
     
-    func completeWithStatus(code: Int, at index: Int = 0) {
+    func completeWithStatus(code: Int, data: Data = Data(), at index: Int = 0) {
         let anyURL = URL(string: "any-url.com")!
         let urlResponse = HTTPURLResponse(url: anyURL, statusCode: code, httpVersion: nil, headerFields: nil)
         
-        completions[index](nil, urlResponse, nil)
+        completions[index](data, urlResponse, nil)
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Place {
+struct Place: Equatable {
     let id: String
     let name: String
     let rating: Double
@@ -15,4 +15,8 @@ struct Place {
     let iconURL: URL
     let priceLevel: PriceLevel
     let coordinates: LocationCoordinate
+    
+    static func == (lhs: Place, rhs: Place) -> Bool {
+        lhs.id == rhs.id
+    }
 }
