@@ -93,6 +93,17 @@ class RemotePlaceLoaderTests: XCTestCase {
         }
     }
     
+    func test_load_returnsEmptyArrayOn200HTTPURLResponseWithNonOKStatus() {
+        let (spy, loader) = makeSUT()
+
+        expect(when: loader, toCompleteWith: .success([])) {
+            let dic: [String: String] = ["status": "NON_OK_STATUS"]
+            let validJSON = try! JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted)
+            
+            spy.completeWithStatus(code: 200, data: validJSON)
+        }
+    }
+    
     // MARK: - Helper Methods
     
     private func makeSUT() -> (spy: HttpClientSpy, sut: PlaceLoader) {
@@ -106,15 +117,15 @@ class RemotePlaceLoaderTests: XCTestCase {
         Request(keyword: nil, coordinates: LocationCoordinate(latitude: 0, longitude: 0), radius: 0, type: "a string")
     }
     
-    private func expect(when sut: PlaceLoader, toCompleteWith expectedResult: RemotePlaceLoader.Result, when action: () -> Void) {
+    private func expect(when sut: PlaceLoader, toCompleteWith expectedResult: RemotePlaceLoader.Result, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
         sut.load(with: anyRequest()) { result in
             switch (result, expectedResult) {
             case (let .success(places), let .success(expectedPlaces)):
-                XCTAssertEqual(places, expectedPlaces, "Expected \(expectedPlaces) but received \(places) instead")
+                XCTAssertEqual(places, expectedPlaces, "Expected \(expectedPlaces) but received \(places) instead", file: file, line: line)
             case (let .failure(error), let .failure(expectedError)):
-                XCTAssertEqual(error as! RemotePlaceLoader.Error, expectedError as! RemotePlaceLoader.Error, "Expected \(error) but received \(expectedError) instead")
+                XCTAssertEqual(error as! RemotePlaceLoader.Error, expectedError as! RemotePlaceLoader.Error, "Expected \(error) but received \(expectedError) instead", file: file, line: line)
             default:
-                XCTFail("Expected \(expectedResult) but received \(result) instead")
+                XCTFail("Expected \(expectedResult) but received \(result) instead", file: file, line: line)
             }
         }
         
