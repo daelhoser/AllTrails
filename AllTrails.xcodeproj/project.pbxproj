@@ -12,9 +12,13 @@
 		5F507260273D55E200C2981D /* PlaceCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50725F273D55E200C2981D /* PlaceCodable.swift */; };
 		5F507262273D55F700C2981D /* GeometryCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F507261273D55F700C2981D /* GeometryCodable.swift */; };
 		5F507264273D561900C2981D /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F507263273D561900C2981D /* HttpClient.swift */; };
+		5F507266273D569C00C2981D /* PlacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F507265273D569C00C2981D /* PlacesTableViewController.swift */; };
+		5F50726A273D57C200C2981D /* PlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F507269273D57C200C2981D /* PlaceView.swift */; };
+		5F50726C273D57DE00C2981D /* PlaceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F50726B273D57DE00C2981D /* PlaceView.xib */; };
+		5F507270273D89EF00C2981D /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50726E273D89EF00C2981D /* PlaceTableViewCell.swift */; };
+		5F507271273D89EF00C2981D /* PlaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F50726F273D89EF00C2981D /* PlaceTableViewCell.xib */; };
 		5FEE5247273BFF88002C6A36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE5246273BFF88002C6A36 /* AppDelegate.swift */; };
 		5FEE5249273BFF88002C6A36 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE5248273BFF88002C6A36 /* SceneDelegate.swift */; };
-		5FEE524B273BFF88002C6A36 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE524A273BFF88002C6A36 /* ViewController.swift */; };
 		5FEE524E273BFF88002C6A36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FEE524C273BFF88002C6A36 /* Main.storyboard */; };
 		5FEE5250273BFF8A002C6A36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FEE524F273BFF8A002C6A36 /* Assets.xcassets */; };
 		5FEE5253273BFF8A002C6A36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FEE5251273BFF8A002C6A36 /* LaunchScreen.storyboard */; };
@@ -42,10 +46,14 @@
 		5F50725F273D55E200C2981D /* PlaceCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCodable.swift; sourceTree = "<group>"; };
 		5F507261273D55F700C2981D /* GeometryCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryCodable.swift; sourceTree = "<group>"; };
 		5F507263273D561900C2981D /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
+		5F507265273D569C00C2981D /* PlacesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesTableViewController.swift; sourceTree = "<group>"; };
+		5F507269273D57C200C2981D /* PlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceView.swift; sourceTree = "<group>"; };
+		5F50726B273D57DE00C2981D /* PlaceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceView.xib; sourceTree = "<group>"; };
+		5F50726E273D89EF00C2981D /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewCell.swift; sourceTree = "<group>"; };
+		5F50726F273D89EF00C2981D /* PlaceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceTableViewCell.xib; sourceTree = "<group>"; };
 		5FEE5243273BFF88002C6A36 /* AllTrails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllTrails.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FEE5246273BFF88002C6A36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5FEE5248273BFF88002C6A36 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5FEE524A273BFF88002C6A36 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5FEE524D273BFF88002C6A36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5FEE524F273BFF8A002C6A36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5FEE5252273BFF8A002C6A36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -98,6 +106,35 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		5F507267273D574500C2981D /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				5F507268273D575F00C2981D /* Shared */,
+				5F50726D273D89CC00C2981D /* TableView */,
+				5FEE524C273BFF88002C6A36 /* Main.storyboard */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		5F507268273D575F00C2981D /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				5F507269273D57C200C2981D /* PlaceView.swift */,
+				5F50726B273D57DE00C2981D /* PlaceView.xib */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		5F50726D273D89CC00C2981D /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				5F507265273D569C00C2981D /* PlacesTableViewController.swift */,
+				5F50726E273D89EF00C2981D /* PlaceTableViewCell.swift */,
+				5F50726F273D89EF00C2981D /* PlaceTableViewCell.xib */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
 		5FEE523A273BFF88002C6A36 = {
 			isa = PBXGroup;
 			children = (
@@ -121,10 +158,9 @@
 			children = (
 				5F507259273D548700C2981D /* API */,
 				5FEE5276273C0297002C6A36 /* Domain */,
+				5F507267273D574500C2981D /* UIKit */,
 				5FEE5246273BFF88002C6A36 /* AppDelegate.swift */,
 				5FEE5248273BFF88002C6A36 /* SceneDelegate.swift */,
-				5FEE524A273BFF88002C6A36 /* ViewController.swift */,
-				5FEE524C273BFF88002C6A36 /* Main.storyboard */,
 				5FEE524F273BFF8A002C6A36 /* Assets.xcassets */,
 				5FEE5251273BFF8A002C6A36 /* LaunchScreen.storyboard */,
 				5FEE5254273BFF8A002C6A36 /* Info.plist */,
@@ -243,6 +279,8 @@
 			files = (
 				5FEE5253273BFF8A002C6A36 /* LaunchScreen.storyboard in Resources */,
 				5FEE5250273BFF8A002C6A36 /* Assets.xcassets in Resources */,
+				5F50726C273D57DE00C2981D /* PlaceView.xib in Resources */,
+				5F507271273D89EF00C2981D /* PlaceTableViewCell.xib in Resources */,
 				5FEE524E273BFF88002C6A36 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,9 +301,10 @@
 			files = (
 				5FEE527E273C068D002C6A36 /* PriceLevel.swift in Sources */,
 				5FEE5278273C02BF002C6A36 /* PlaceLoader.swift in Sources */,
+				5F50726A273D57C200C2981D /* PlaceView.swift in Sources */,
 				5F507262273D55F700C2981D /* GeometryCodable.swift in Sources */,
-				5FEE524B273BFF88002C6A36 /* ViewController.swift in Sources */,
 				5FEE5280273C069E002C6A36 /* Place.swift in Sources */,
+				5F507266273D569C00C2981D /* PlacesTableViewController.swift in Sources */,
 				5F50725B273D54A200C2981D /* RemotePlaceLoader.swift in Sources */,
 				5FEE527A273C0661002C6A36 /* Request.swift in Sources */,
 				5F507264273D561900C2981D /* HttpClient.swift in Sources */,
@@ -274,6 +313,7 @@
 				5F50725E273D55CF00C2981D /* RootCodable.swift in Sources */,
 				5F507260273D55E200C2981D /* PlaceCodable.swift in Sources */,
 				5FEE5249273BFF88002C6A36 /* SceneDelegate.swift in Sources */,
+				5F507270273D89EF00C2981D /* PlaceTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
