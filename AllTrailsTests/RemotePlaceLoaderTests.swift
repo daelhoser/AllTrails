@@ -36,8 +36,12 @@ struct GeometryCodable: Decodable {
     }
 }
 
+protocol HttpClient {
+    func request(completion: @escaping (Data?, URLResponse?, Error?) -> Void)
+}
+
 class RemotePlaceLoader: PlaceLoader {
-    let client: HttpClientSpy
+    let client: HttpClient
     private let decoder = JSONDecoder()
     
     enum Error: Swift.Error, Equatable {
@@ -45,7 +49,7 @@ class RemotePlaceLoader: PlaceLoader {
         case invalidResponse
     }
 
-    init(client: HttpClientSpy) {
+    init(client: HttpClient) {
         self.client = client
     }
     
@@ -227,7 +231,7 @@ class RemotePlaceLoaderTests: XCTestCase {
     }
 }
 
-class HttpClientSpy {
+class HttpClientSpy: HttpClient {
     var requests: Int {
         completions.count
     }
