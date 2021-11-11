@@ -8,8 +8,37 @@
 import XCTest
 @testable import AllTrails
 
+struct RootCodable: Decodable {
+    let status: String
+    let results: [PlaceCodable]
+}
+
+struct PlaceCodable: Decodable {
+    let place_id: String
+    let name: String
+    let rating: Double
+    let user_ratings_total: Int
+    let icon: String
+    let price_level: Int
+    let geometry: GeometryCodable
+    
+    var toPlace: Place {
+        return Place(id: place_id, name: name, rating: rating, numberOfRatings: user_ratings_total, iconURL: URL(string: icon)!, priceLevel: PriceLevel(rawValue: price_level) ?? .free, coordinates: geometry.toCoordinate)
+    }
+}
+
+struct GeometryCodable: Decodable {
+    let lat: Double
+    let lng: Double
+    
+    var toCoordinate: LocationCoordinate {
+        LocationCoordinate(latitude: lat, longitude: lng)
+    }
+}
+
 class RemotePlaceLoader: PlaceLoader {
     let client: HttpClientSpy
+    private let decoder = JSONDecoder()
     
     enum Error: Swift.Error, Equatable {
         case networkError
@@ -27,12 +56,27 @@ class RemotePlaceLoader: PlaceLoader {
                 return
             }
             
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200, let data = data else {
                 completion(.failure(Error.invalidResponse))
                 return
             }
             
-            completion(.success([]))
+            if let x = String(data: data, encoding: .utf8) {
+                
+                print(x)
+            }
+
+            if let root = try? self.decoder.decode(RootCodable.self, from: data) {
+                if root.status != "OK" {
+                    completion(.success([]))
+                } else {
+                    completion(.success(root.results.map { $0.toPlace }))
+                }
+            } else {
+                
+                completion(.success([]))
+            }
+            
         }
     }
 }
@@ -115,6 +159,19 @@ class RemotePlaceLoaderTests: XCTestCase {
         }
     }
     
+    func test_load_returnsPlacesOnValid200HTTPURLResponseWithPlaces() {
+        let (spy, loader) = makeSUT()
+        let place1 = createPlace(with: "1", name: "a place")
+        let place2 = createPlace(with: "2", name: "another place")
+
+        expect(when: loader, toCompleteWith: .success([place1.model, place2.model])) {
+            let dic: [String: Any] = ["status": "OK", "results": [place1.dictionary, place2.dictionary]]
+            let validJSON = try! JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted)
+            
+            spy.completeWithStatus(code: 200, data: validJSON)
+        }
+    }
+    
     // MARK: - Helper Methods
     
     private func makeSUT() -> (spy: HttpClientSpy, sut: PlaceLoader) {
@@ -141,6 +198,28 @@ class RemotePlaceLoaderTests: XCTestCase {
         }
         
         action()
+    }
+    
+    private func createPlace(with id: String, name: String) -> (model: Place, dictionary: [String: Any]) {
+        // NOTE: the API says all fields are optional. My assumption is because this class is used in different endpoints. I'd like to think that we ALWAYS receive these fields. I'll test this a bit more if time permits
+        let place = Place(id: id, name: name, rating: 2.0, numberOfRatings: 2, iconURL: URL(string: "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png")!, priceLevel: .expensive, coordinates: LocationCoordinate(latitude: 2, longitude: 4))
+        
+        let location: [String: Any] = [
+            "lat": place.coordinates.latitude,
+            "lng": place.coordinates.longitude
+        ]
+        
+        let dic: [String: Any] = [
+            "place_id": id,
+            "name": name,
+            "rating": place.rating,
+            "user_ratings_total": place.numberOfRatings,
+            "icon": place.iconURL.absoluteString,
+            "price_level": place.priceLevel.rawValue,
+            "geometry": location
+        ]
+        
+        return (place, dic)
     }
 }
 

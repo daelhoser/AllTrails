@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum PriceLevel {
+enum PriceLevel: Int {
     case free
     case inexpensive
     case moderate
