@@ -58,23 +58,20 @@ class RemotePlaceLoader: PlaceLoader {
                 return
             }
             
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200, let data = data else {
-                completion(.failure(Error.invalidResponse))
-                return
-            }
-
-            if let root = try? self.decoder.decode(RootCodable.self, from: data) {
-                if root.status != "OK" {
-                    completion(.success([]))
-                } else {
-                    completion(.success(root.results.map { $0.toPlace }))
-                }
-            } else {
-                
-                completion(.success([]))
-            }
-            
+            completion(self.map(data: data, response: response))
         }
+    }
+    
+    private func map(data: Data?, response: URLResponse?) -> PlaceLoader.Result {
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200, let data = data else {
+            return .failure(Error.invalidResponse)
+        }
+
+        if let root = try? self.decoder.decode(RootCodable.self, from: data), root.status == "OK" {
+            return .success(root.results.map { $0.toPlace })
+        }
+            
+        return .success([])
     }
 }
 
