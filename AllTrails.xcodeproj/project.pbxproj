@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5F50725B273D54A200C2981D /* RemotePlaceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50725A273D54A200C2981D /* RemotePlaceLoader.swift */; };
+		5F50725E273D55CF00C2981D /* RootCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50725D273D55CF00C2981D /* RootCodable.swift */; };
+		5F507260273D55E200C2981D /* PlaceCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50725F273D55E200C2981D /* PlaceCodable.swift */; };
+		5F507262273D55F700C2981D /* GeometryCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F507261273D55F700C2981D /* GeometryCodable.swift */; };
+		5F507264273D561900C2981D /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F507263273D561900C2981D /* HttpClient.swift */; };
 		5FEE5247273BFF88002C6A36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE5246273BFF88002C6A36 /* AppDelegate.swift */; };
 		5FEE5249273BFF88002C6A36 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE5248273BFF88002C6A36 /* SceneDelegate.swift */; };
 		5FEE524B273BFF88002C6A36 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE524A273BFF88002C6A36 /* ViewController.swift */; };
@@ -34,6 +38,10 @@
 
 /* Begin PBXFileReference section */
 		5F50725A273D54A200C2981D /* RemotePlaceLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePlaceLoader.swift; sourceTree = "<group>"; };
+		5F50725D273D55CF00C2981D /* RootCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCodable.swift; sourceTree = "<group>"; };
+		5F50725F273D55E200C2981D /* PlaceCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCodable.swift; sourceTree = "<group>"; };
+		5F507261273D55F700C2981D /* GeometryCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryCodable.swift; sourceTree = "<group>"; };
+		5F507263273D561900C2981D /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		5FEE5243273BFF88002C6A36 /* AllTrails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllTrails.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FEE5246273BFF88002C6A36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5FEE5248273BFF88002C6A36 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,9 +81,21 @@
 		5F507259273D548700C2981D /* API */ = {
 			isa = PBXGroup;
 			children = (
+				5F50725C273D55C400C2981D /* Models */,
 				5F50725A273D54A200C2981D /* RemotePlaceLoader.swift */,
+				5F507263273D561900C2981D /* HttpClient.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		5F50725C273D55C400C2981D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5F50725D273D55CF00C2981D /* RootCodable.swift */,
+				5F50725F273D55E200C2981D /* PlaceCodable.swift */,
+				5F507261273D55F700C2981D /* GeometryCodable.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		5FEE523A273BFF88002C6A36 = {
@@ -243,12 +263,16 @@
 			files = (
 				5FEE527E273C068D002C6A36 /* PriceLevel.swift in Sources */,
 				5FEE5278273C02BF002C6A36 /* PlaceLoader.swift in Sources */,
+				5F507262273D55F700C2981D /* GeometryCodable.swift in Sources */,
 				5FEE524B273BFF88002C6A36 /* ViewController.swift in Sources */,
 				5FEE5280273C069E002C6A36 /* Place.swift in Sources */,
 				5F50725B273D54A200C2981D /* RemotePlaceLoader.swift in Sources */,
 				5FEE527A273C0661002C6A36 /* Request.swift in Sources */,
+				5F507264273D561900C2981D /* HttpClient.swift in Sources */,
 				5FEE5247273BFF88002C6A36 /* AppDelegate.swift in Sources */,
 				5FEE527C273C0676002C6A36 /* LocationCoordinate.swift in Sources */,
+				5F50725E273D55CF00C2981D /* RootCodable.swift in Sources */,
+				5F507260273D55E200C2981D /* PlaceCodable.swift in Sources */,
 				5FEE5249273BFF88002C6A36 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
