@@ -104,6 +104,17 @@ class RemotePlaceLoaderTests: XCTestCase {
         }
     }
     
+    func test_load_returnsEmptyArrayOn200HTTPURLResponseWithEmptyArrayAndOKStatus() {
+        let (spy, loader) = makeSUT()
+
+        expect(when: loader, toCompleteWith: .success([])) {
+            let dic: [String: String] = ["status": "OK", "results": "[]"]
+            let validJSON = try! JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted)
+            
+            spy.completeWithStatus(code: 200, data: validJSON)
+        }
+    }
+    
     // MARK: - Helper Methods
     
     private func makeSUT() -> (spy: HttpClientSpy, sut: PlaceLoader) {
