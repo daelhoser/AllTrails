@@ -62,11 +62,6 @@ class RemotePlaceLoader: PlaceLoader {
                 completion(.failure(Error.invalidResponse))
                 return
             }
-            
-            if let x = String(data: data, encoding: .utf8) {
-                
-                print(x)
-            }
 
             if let root = try? self.decoder.decode(RootCodable.self, from: data) {
                 if root.status != "OK" {
