@@ -152,7 +152,9 @@ class RemotePlaceLoaderTests: XCTestCase {
             "user_ratings_total": place.numberOfRatings,
             "icon": place.iconURL.absoluteString,
             "price_level": place.priceLevel!.rawValue,
-            "geometry": location
+            "geometry": [
+                "location": location
+                ]
         ]
         
         return (place, dic)

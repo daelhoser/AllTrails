@@ -8,10 +8,14 @@
 import Foundation
 
 struct GeometryCodable: Decodable {
-    let lat: Double
-    let lng: Double
+    let location: LocationCodable
     
     var toCoordinate: LocationCoordinate {
-        LocationCoordinate(latitude: lat, longitude: lng)
+        LocationCoordinate(latitude: location.lat, longitude: location.lng)
     }
+}
+
+struct LocationCodable: Decodable {
+    let lat: Double
+    let lng: Double
 }
