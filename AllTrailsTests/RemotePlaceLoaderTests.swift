@@ -19,7 +19,7 @@ class RemotePlaceLoaderTests: XCTestCase {
     func test_load_requestsDataFromURL() {
         let (spy, loader) = makeSUT()
 
-        loader.load(with: anyRequest()) { _ in}
+        _ = loader.load(with: anyRequest()) { _ in}
         
         XCTAssertEqual(spy.requests, 1)
     }
@@ -27,8 +27,8 @@ class RemotePlaceLoaderTests: XCTestCase {
     func test_load_twice_requestsDataFromURLTwice() {
         let (spy, loader) = makeSUT()
 
-        loader.load(with: anyRequest()) { _ in}
-        loader.load(with: anyRequest()) { _ in}
+        _ = loader.load(with: anyRequest()) { _ in}
+        _ = loader.load(with: anyRequest()) { _ in}
 
         XCTAssertEqual(spy.requests, 2)
     }
@@ -122,7 +122,7 @@ class RemotePlaceLoaderTests: XCTestCase {
     }
     
     private func expect(when sut: PlaceLoader, toCompleteWith expectedResult: RemotePlaceLoader.Result, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
-        sut.load(with: anyRequest()) { result in
+        _ = sut.load(with: anyRequest()) { result in
             switch (result, expectedResult) {
             case (let .success(places), let .success(expectedPlaces)):
                 XCTAssertEqual(places, expectedPlaces, "Expected \(expectedPlaces) but received \(places) instead", file: file, line: line)
@@ -164,10 +164,17 @@ class HttpClientSpy: HttpClient {
         completions.count
     }
     
+    private struct Task: HTTPClientTask {
+        let callback: () -> Void
+        func cancel() { callback() }
+    }
+    
     private var completions = [(Data?, URLResponse?, Error?) -> Void]()
     
-    func request(completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
+    func request(completion: @escaping (Data?, URLResponse?, Error?) -> Void) -> HTTPClientTask {
         completions.append(completion)
+        
+        return Task() { }
     }
     
     func completeWithError(_ error: NSError, at index: Int = 0) {
