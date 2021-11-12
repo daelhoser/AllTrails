@@ -13,7 +13,7 @@ struct Place: Equatable {
     let rating: Double
     let numberOfRatings: Int
     let iconURL: URL
-    let priceLevel: PriceLevel
+    let priceLevel: PriceLevel?
     let coordinates: LocationCoordinate
     
     static func == (lhs: Place, rhs: Place) -> Bool {
