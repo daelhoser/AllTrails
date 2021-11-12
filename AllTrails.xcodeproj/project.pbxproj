@@ -13,6 +13,7 @@
 		5F250248273EF635007D04B2 /* RemoteDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F250247273EF635007D04B2 /* RemoteDataLoader.swift */; };
 		5F25024D273EFA57007D04B2 /* HTTPURLResponse+StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F25024C273EFA57007D04B2 /* HTTPURLResponse+StatusCode.swift */; };
 		5F25024F273F066E007D04B2 /* MainQueueDispatcherDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F25024E273F066E007D04B2 /* MainQueueDispatcherDecorator.swift */; };
+		5F250252273F08B2007D04B2 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F250251273F08B2007D04B2 /* RootViewController.swift */; };
 		5F50725B273D54A200C2981D /* RemotePlaceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50725A273D54A200C2981D /* RemotePlaceLoader.swift */; };
 		5F50725E273D55CF00C2981D /* RootCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50725D273D55CF00C2981D /* RootCodable.swift */; };
 		5F507260273D55E200C2981D /* PlaceCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50725F273D55E200C2981D /* PlaceCodable.swift */; };
@@ -55,6 +56,7 @@
 		5F250247273EF635007D04B2 /* RemoteDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataLoader.swift; sourceTree = "<group>"; };
 		5F25024C273EFA57007D04B2 /* HTTPURLResponse+StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+StatusCode.swift"; sourceTree = "<group>"; };
 		5F25024E273F066E007D04B2 /* MainQueueDispatcherDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatcherDecorator.swift; sourceTree = "<group>"; };
+		5F250251273F08B2007D04B2 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		5F50725A273D54A200C2981D /* RemotePlaceLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePlaceLoader.swift; sourceTree = "<group>"; };
 		5F50725D273D55CF00C2981D /* RootCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCodable.swift; sourceTree = "<group>"; };
 		5F50725F273D55E200C2981D /* PlaceCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCodable.swift; sourceTree = "<group>"; };
@@ -136,6 +138,14 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		5F250250273F089C007D04B2 /* RootView */ = {
+			isa = PBXGroup;
+			children = (
+				5F250251273F08B2007D04B2 /* RootViewController.swift */,
+			);
+			path = RootView;
+			sourceTree = "<group>";
+		};
 		5F507259273D548700C2981D /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,8 +172,9 @@
 		5F507267273D574500C2981D /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				5F250250273F089C007D04B2 /* RootView */,
 				5F507268273D575F00C2981D /* Shared */,
-				5F50726D273D89CC00C2981D /* Places */,
+				5F50726D273D89CC00C2981D /* Places Table View */,
 				5FEE524C273BFF88002C6A36 /* Main.storyboard */,
 			);
 			path = UIKit;
@@ -178,13 +189,13 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		5F50726D273D89CC00C2981D /* Places */ = {
+		5F50726D273D89CC00C2981D /* Places Table View */ = {
 			isa = PBXGroup;
 			children = (
 				5F250242273EE818007D04B2 /* Controllers */,
 				5F250241273EE80B007D04B2 /* Views */,
 			);
-			path = Places;
+			path = "Places Table View";
 			sourceTree = "<group>";
 		};
 		5FEE523A273BFF88002C6A36 = {
@@ -377,6 +388,7 @@
 				5FF33848273E255F002D28F0 /* RequestTask.swift in Sources */,
 				5F250244273EE845007D04B2 /* PlaceCellController.swift in Sources */,
 				5F250240273EE7D8007D04B2 /* PlaceViewModel.swift in Sources */,
+				5F250252273F08B2007D04B2 /* RootViewController.swift in Sources */,
 				5F507264273D561900C2981D /* HttpClient.swift in Sources */,
 				5F250248273EF635007D04B2 /* RemoteDataLoader.swift in Sources */,
 				5FEE5247273BFF88002C6A36 /* AppDelegate.swift in Sources */,
