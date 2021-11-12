@@ -8,20 +8,15 @@
 import UIKit
 
 final class PlacesTableViewController: UITableViewController, UITableViewDataSourcePrefetching {
-    lazy var loader: PlaceLoader = {
-        let client = URLSessionHTTPClient(session: URLSession.shared)
-        let loader = RemotePlaceLoader(client: client)
-        
-        return MainQueueDispatcherDecorator(decoratee: loader)
-    }()
     private var model = [PlaceCellController]()
+    
+    var dataLoader: DataLoader!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.prefetchDataSource = self
         tableView.register(PlaceTableViewCell.self, forCellReuseIdentifier: PlaceTableViewCell.identifier)
-        loadMockData()
     }
 
     // MARK: - Table view data source
@@ -45,24 +40,8 @@ final class PlacesTableViewController: UITableViewController, UITableViewDataSou
         indexPaths.forEach { model[$0.row].cancelImageLoad() }
     }
 
- 
-    // MARK: - Helper Methods
-    
-    private func loadMockData() {
-        let location = LocationCoordinate(latitude: 2020, longitude: 2020)
-        _ = loader.load(with: Request(keyword: nil, coordinates: location, radius: 0, type: "")) { [weak self] (result) in
-            switch result {
-            case .failure:
-                self?.update(with: [])
-            case let .success(places):
-                self?.update(with: places)
-            }
-        }
-    }
-    
-    private func update(with places: [Place]) {
-        let dataLoader = RemoteDataLoader(client: URLSessionHTTPClient(session: URLSession.shared))
-        let viewModels = places.map { PlaceViewModel.init(model: $0, imageLoader: MainQueueDispatcherDecorator(decoratee: dataLoader)) }
+    func update(with places: [Place]) {
+        let viewModels = places.map { PlaceViewModel.init(model: $0, imageLoader: dataLoader) }
         let controllers = viewModels.map { PlaceCellController.init(viewModel: $0) }
         model.removeAll()
         model.append(contentsOf: controllers)
