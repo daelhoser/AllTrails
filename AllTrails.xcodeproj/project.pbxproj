@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F250240273EE7D8007D04B2 /* PlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F25023F273EE7D8007D04B2 /* PlaceViewModel.swift */; };
 		5F50725B273D54A200C2981D /* RemotePlaceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50725A273D54A200C2981D /* RemotePlaceLoader.swift */; };
 		5F50725E273D55CF00C2981D /* RootCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50725D273D55CF00C2981D /* RootCodable.swift */; };
 		5F507260273D55E200C2981D /* PlaceCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50725F273D55E200C2981D /* PlaceCodable.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F25023F273EE7D8007D04B2 /* PlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewModel.swift; sourceTree = "<group>"; };
 		5F50725A273D54A200C2981D /* RemotePlaceLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePlaceLoader.swift; sourceTree = "<group>"; };
 		5F50725D273D55CF00C2981D /* RootCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCodable.swift; sourceTree = "<group>"; };
 		5F50725F273D55E200C2981D /* PlaceCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCodable.swift; sourceTree = "<group>"; };
@@ -90,6 +92,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F25023E273EE7C2007D04B2 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				5F25023F273EE7D8007D04B2 /* PlaceViewModel.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
 		5F507259273D548700C2981D /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +171,7 @@
 		5FEE5245273BFF88002C6A36 /* AllTrails */ = {
 			isa = PBXGroup;
 			children = (
+				5F25023E273EE7C2007D04B2 /* Presentation */,
 				5F507259273D548700C2981D /* API */,
 				5FEE5276273C0297002C6A36 /* Domain */,
 				5F507267273D574500C2981D /* UIKit */,
@@ -323,6 +334,7 @@
 				5F50725B273D54A200C2981D /* RemotePlaceLoader.swift in Sources */,
 				5FEE527A273C0661002C6A36 /* Request.swift in Sources */,
 				5FF33848273E255F002D28F0 /* RequestTask.swift in Sources */,
+				5F250240273EE7D8007D04B2 /* PlaceViewModel.swift in Sources */,
 				5F507264273D561900C2981D /* HttpClient.swift in Sources */,
 				5FEE5247273BFF88002C6A36 /* AppDelegate.swift in Sources */,
 				5FEE527C273C0676002C6A36 /* LocationCoordinate.swift in Sources */,
