@@ -176,7 +176,7 @@
 		5FEE525C273BFF8A002C6A36 /* AllTrailsTests */ = {
 			isa = PBXGroup;
 			children = (
-				5FEE525D273BFF8A002C6A36 /* RemotePlaceLoaderTests.swift */,
+				5FF3384B273E2BF0002D28F0 /* Api */,
 				5FEE525F273BFF8A002C6A36 /* Info.plist */,
 			);
 			path = AllTrailsTests;
@@ -201,6 +201,14 @@
 				5FEE527F273C069E002C6A36 /* Place.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		5FF3384B273E2BF0002D28F0 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				5FEE525D273BFF8A002C6A36 /* RemotePlaceLoaderTests.swift */,
+			);
+			path = Api;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
