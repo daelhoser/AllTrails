@@ -29,6 +29,7 @@
 		5FEE527E273C068D002C6A36 /* PriceLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE527D273C068D002C6A36 /* PriceLevel.swift */; };
 		5FEE5280273C069E002C6A36 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE527F273C069E002C6A36 /* Place.swift */; };
 		5FF33848273E255F002D28F0 /* RequestTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF33847273E255F002D28F0 /* RequestTask.swift */; };
+		5FF3384A273E2799002D28F0 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF33849273E2799002D28F0 /* URLSessionHTTPClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		5FEE527D273C068D002C6A36 /* PriceLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceLevel.swift; sourceTree = "<group>"; };
 		5FEE527F273C069E002C6A36 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		5FF33847273E255F002D28F0 /* RequestTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTask.swift; sourceTree = "<group>"; };
+		5FF33849273E2799002D28F0 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			children = (
 				5F50725C273D55C400C2981D /* Models */,
 				5F50725A273D54A200C2981D /* RemotePlaceLoader.swift */,
+				5FF33849273E2799002D28F0 /* URLSessionHTTPClient.swift */,
 				5F507263273D561900C2981D /* HttpClient.swift */,
 			);
 			path = API;
@@ -306,6 +309,7 @@
 				5FEE5278273C02BF002C6A36 /* PlaceLoader.swift in Sources */,
 				5F50726A273D57C200C2981D /* PlaceView.swift in Sources */,
 				5F507262273D55F700C2981D /* GeometryCodable.swift in Sources */,
+				5FF3384A273E2799002D28F0 /* URLSessionHTTPClient.swift in Sources */,
 				5FEE5280273C069E002C6A36 /* Place.swift in Sources */,
 				5F507266273D569C00C2981D /* PlacesTableViewController.swift in Sources */,
 				5F50725B273D54A200C2981D /* RemotePlaceLoader.swift in Sources */,
