@@ -12,5 +12,7 @@ protocol HTTPClientTask {
 }
 
 protocol HttpClient {
-    func request(completion: @escaping (Data?, URLResponse?, Error?) -> Void) -> HTTPClientTask
+    typealias Result = Swift.Result<(HTTPURLResponse, Data), Error>
+
+    func request(completion: @escaping (Result) -> Void) -> HTTPClientTask
 }
