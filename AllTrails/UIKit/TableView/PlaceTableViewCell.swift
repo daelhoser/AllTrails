@@ -17,17 +17,26 @@ final class PlaceTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentView.addSubview(placeView)
-        placeView.translatesAutoresizingMaskIntoConstraints = false
-        placeView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        placeView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        placeView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        placeView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-
+        backgroundColor = #colorLiteral(red: 0.9725490196, green: 0.9725490196, blue: 0.9490196078, alpha: 1)
+        
+        addPlaceView()
+        placeView.layer.cornerRadius = 8.0
+        placeView.clipsToBounds = true
+        placeView.layer.borderColor = #colorLiteral(red: 0.9019607843, green: 0.9019607843, blue: 0.9019607843, alpha: 1).cgColor
+        placeView.layer.borderWidth = 1.0
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
 
+    }
+    
+    private func addPlaceView() {
+        contentView.addSubview(placeView)
+        placeView.translatesAutoresizingMaskIntoConstraints = false
+        placeView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24.0).isActive = true
+        placeView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24.0).isActive = true
+        placeView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4.0).isActive = true
+        placeView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4.0).isActive = true
     }
 }
