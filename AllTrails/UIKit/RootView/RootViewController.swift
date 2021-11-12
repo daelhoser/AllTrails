@@ -18,7 +18,7 @@ final class RootViewController: UIViewController {
         super.viewDidLoad()
 
         addChild(listViewController)
-        view.addSubview(listViewController.view)
+        view.insertSubview(listViewController.view, at: 0)
         listViewController.view.translatesAutoresizingMaskIntoConstraints = false
         listViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         listViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true

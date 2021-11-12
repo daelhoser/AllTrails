@@ -15,8 +15,22 @@
                     <view key="view" contentMode="scaleToFill" id="40r-qB-3Ux">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6X-a7-Qfg">
+                                <rect key="frame" x="148" y="790" width="118" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="PUj-6z-PV0"/>
+                                    <constraint firstAttribute="width" constant="118" id="TnI-GX-JZb"/>
+                                </constraints>
+                                <state key="normal" image="Map Button"/>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Qdv-SQ-2P9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Y6X-a7-Qfg" firstAttribute="centerX" secondItem="Qdv-SQ-2P9" secondAttribute="centerX" id="mfD-Ql-2E7"/>
+                            <constraint firstItem="Qdv-SQ-2P9" firstAttribute="bottom" secondItem="Y6X-a7-Qfg" secondAttribute="bottom" constant="12" id="xUP-ya-tpm"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="18G-CY-SuV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -53,6 +67,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Map Button" width="118" height="60"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
