@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		5F250240273EE7D8007D04B2 /* PlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F25023F273EE7D8007D04B2 /* PlaceViewModel.swift */; };
 		5F250244273EE845007D04B2 /* PlaceCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F250243273EE845007D04B2 /* PlaceCellController.swift */; };
+		5F250246273EF5B4007D04B2 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F250245273EF5B4007D04B2 /* DataLoader.swift */; };
+		5F250248273EF635007D04B2 /* RemoteDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F250247273EF635007D04B2 /* RemoteDataLoader.swift */; };
+		5F25024D273EFA57007D04B2 /* HTTPURLResponse+StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F25024C273EFA57007D04B2 /* HTTPURLResponse+StatusCode.swift */; };
 		5F50725B273D54A200C2981D /* RemotePlaceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50725A273D54A200C2981D /* RemotePlaceLoader.swift */; };
 		5F50725E273D55CF00C2981D /* RootCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50725D273D55CF00C2981D /* RootCodable.swift */; };
 		5F507260273D55E200C2981D /* PlaceCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50725F273D55E200C2981D /* PlaceCodable.swift */; };
@@ -47,6 +50,9 @@
 /* Begin PBXFileReference section */
 		5F25023F273EE7D8007D04B2 /* PlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewModel.swift; sourceTree = "<group>"; };
 		5F250243273EE845007D04B2 /* PlaceCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCellController.swift; sourceTree = "<group>"; };
+		5F250245273EF5B4007D04B2 /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
+		5F250247273EF635007D04B2 /* RemoteDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataLoader.swift; sourceTree = "<group>"; };
+		5F25024C273EFA57007D04B2 /* HTTPURLResponse+StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+StatusCode.swift"; sourceTree = "<group>"; };
 		5F50725A273D54A200C2981D /* RemotePlaceLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePlaceLoader.swift; sourceTree = "<group>"; };
 		5F50725D273D55CF00C2981D /* RootCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCodable.swift; sourceTree = "<group>"; };
 		5F50725F273D55E200C2981D /* PlaceCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCodable.swift; sourceTree = "<group>"; };
@@ -120,11 +126,21 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		5F250249273EF736007D04B2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5F25024C273EFA57007D04B2 /* HTTPURLResponse+StatusCode.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		5F507259273D548700C2981D /* API */ = {
 			isa = PBXGroup;
 			children = (
+				5F250249273EF736007D04B2 /* Helpers */,
 				5F50725C273D55C400C2981D /* Models */,
 				5F50725A273D54A200C2981D /* RemotePlaceLoader.swift */,
+				5F250247273EF635007D04B2 /* RemoteDataLoader.swift */,
 				5FF33849273E2799002D28F0 /* URLSessionHTTPClient.swift */,
 				5F507263273D561900C2981D /* HttpClient.swift */,
 			);
@@ -217,6 +233,7 @@
 			children = (
 				5FEE5281273C06B4002C6A36 /* Entities */,
 				5FEE5277273C02BF002C6A36 /* PlaceLoader.swift */,
+				5F250245273EF5B4007D04B2 /* DataLoader.swift */,
 				5FF33847273E255F002D28F0 /* RequestTask.swift */,
 			);
 			path = Domain;
@@ -343,6 +360,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F25024D273EFA57007D04B2 /* HTTPURLResponse+StatusCode.swift in Sources */,
+				5F250246273EF5B4007D04B2 /* DataLoader.swift in Sources */,
 				5FEE527E273C068D002C6A36 /* PriceLevel.swift in Sources */,
 				5FEE5278273C02BF002C6A36 /* PlaceLoader.swift in Sources */,
 				5F50726A273D57C200C2981D /* PlaceView.swift in Sources */,
@@ -356,6 +375,7 @@
 				5F250244273EE845007D04B2 /* PlaceCellController.swift in Sources */,
 				5F250240273EE7D8007D04B2 /* PlaceViewModel.swift in Sources */,
 				5F507264273D561900C2981D /* HttpClient.swift in Sources */,
+				5F250248273EF635007D04B2 /* RemoteDataLoader.swift in Sources */,
 				5FEE5247273BFF88002C6A36 /* AppDelegate.swift in Sources */,
 				5FEE527C273C0676002C6A36 /* LocationCoordinate.swift in Sources */,
 				5F50725E273D55CF00C2981D /* RootCodable.swift in Sources */,

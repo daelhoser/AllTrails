@@ -64,7 +64,7 @@ final class RemotePlaceLoader: PlaceLoader {
     
     // NOTE: The mapping responsibility shouldn't be part of the loader. We need to move this responsibility elsewhere (MapperClass). This could be done without much fear since we are backed up by tests.
     private func map(data: Data?, response: URLResponse?) -> PlaceLoader.Result {
-        guard let response = response as? HTTPURLResponse, response.statusCode == 200, let data = data else {
+        guard let response = response as? HTTPURLResponse, response.isOK, let data = data else {
             return .failure(Error.invalidResponse)
         }
 
