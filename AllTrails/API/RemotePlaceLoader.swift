@@ -8,8 +8,10 @@
 import Foundation
 
 final class RemotePlaceLoader: PlaceLoader {
-    let client: HttpClient
+    private let baseURLString = "https://maps.googleapis.com/maps/api"
+    private let client: HttpClient
     private let decoder = JSONDecoder()
+    
     typealias Result = PlaceLoader.Result
     
     enum Error: Swift.Error, Equatable {
@@ -46,15 +48,15 @@ final class RemotePlaceLoader: PlaceLoader {
     func load(with request: Request, completion: @escaping (PlaceLoader.Result) -> Void) -> RequestTask {
         let task = Task(completion)
         
-        task.wrapped = client.request { [weak self] (data, response, error)  in
+        task.wrapped = client.request(request: createURLRequest(from: request)) { [weak self] (result)  in
             guard let self = self else { return }
             
-            if  error != nil {
+            switch result {
+            case .failure:
                 completion(.failure(Error.networkError))
-                return
+            case let .success((data, response)):
+                completion(self.map(data: data, response: response))
             }
-            
-            completion(self.map(data: data, response: response))
         }
         
         return task
@@ -71,5 +73,15 @@ final class RemotePlaceLoader: PlaceLoader {
         }
             
         return .success([])
+    }
+    
+    private func createURLRequest(from request: Request) -> URLRequest {
+        let urlString = "\(baseURLString)/place/nearbysearch/json?"
+        
+        guard let url = URL(string: urlString) else {
+            fatalError("Developer Error")
+        }
+                
+        return URLRequest(url: url)
     }
 }

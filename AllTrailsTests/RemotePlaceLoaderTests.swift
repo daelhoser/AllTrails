@@ -169,22 +169,22 @@ class HttpClientSpy: HttpClient {
         func cancel() { callback() }
     }
     
-    private var completions = [(Data?, URLResponse?, Error?) -> Void]()
+    private var completions = [(HttpClient.Result) -> Void]()
     
-    func request(completion: @escaping (Data?, URLResponse?, Error?) -> Void) -> HTTPClientTask {
+    func request(request: URLRequest, completion: @escaping (HttpClient.Result) -> Void) -> HTTPClientTask {
         completions.append(completion)
         
         return Task() { }
     }
     
     func completeWithError(_ error: NSError, at index: Int = 0) {
-        completions[index](nil, nil, error)
+        completions[index](.failure(error))
     }
     
     func completeWithStatus(code: Int, data: Data = Data(), at index: Int = 0) {
         let anyURL = URL(string: "any-url.com")!
-        let urlResponse = HTTPURLResponse(url: anyURL, statusCode: code, httpVersion: nil, headerFields: nil)
+        let urlResponse = HTTPURLResponse(url: anyURL, statusCode: code, httpVersion: nil, headerFields: nil)!
         
-        completions[index](data, urlResponse, nil)
+        completions[index](.success((data, urlResponse)))
     }
 }
