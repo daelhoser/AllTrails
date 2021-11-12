@@ -138,7 +138,7 @@ class RemotePlaceLoaderTests: XCTestCase {
     
     private func createPlace(with id: String, name: String) -> (model: Place, dictionary: [String: Any]) {
         // NOTE: the API says all fields are optional. My assumption is because this class is used in different endpoints. I'd like to think that we ALWAYS receive these fields. I'll test this a bit more if time permits
-        let place = Place(id: id, name: name, rating: 2.0, numberOfRatings: 2, iconURL: URL(string: "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png")!, priceLevel: .expensive, coordinates: LocationCoordinate(latitude: 2, longitude: 4))
+        let place = Place(id: id, name: name, rating: 2.0, numberOfRatings: 2, iconURL: URL(string: "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png")!, priceLevel: .expensive, coordinates: LocationCoordinate(latitude: 2, longitude: 4), vicinity: "a vicinity")
         
         let location: [String: Any] = [
             "lat": place.coordinates.latitude,
@@ -154,7 +154,8 @@ class RemotePlaceLoaderTests: XCTestCase {
             "price_level": place.priceLevel!.rawValue,
             "geometry": [
                 "location": location
-                ]
+                ],
+            "vicinity": place.vicinity
         ]
         
         return (place, dic)

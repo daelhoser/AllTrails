@@ -76,12 +76,14 @@ final class RemotePlaceLoader: PlaceLoader {
     }
     
     private func createURLRequest(from request: Request) -> URLRequest {
-        let urlString = "\(baseURLString)/place/nearbysearch/json?"
+        let urlString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=cruise&location=-33.8670522%2C151.1957362&radius=1500&type=restaurant&key=AIzaSyDQSd210wKX_7cz9MELkxhaEOUhFP0AkSk" //"\(baseURLString)/place/nearbysearch/json?"
         
         guard let url = URL(string: urlString) else {
             fatalError("Developer Error")
         }
                 
-        return URLRequest(url: url)
+        var request = URLRequest(url: url)
+//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        return request
     }
 }

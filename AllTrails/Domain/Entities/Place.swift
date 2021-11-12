@@ -15,6 +15,7 @@ struct Place: Equatable {
     let iconURL: URL
     let priceLevel: PriceLevel?
     let coordinates: LocationCoordinate
+    let vicinity: String
     
     static func == (lhs: Place, rhs: Place) -> Bool {
         lhs.id == rhs.id

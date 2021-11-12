@@ -15,10 +15,11 @@ struct PlaceCodable: Decodable {
     let icon: String
     let price_level: Int?
     let geometry: GeometryCodable
+    let vicinity: String
     
     var toPlace: Place {
         let price = price_level != nil ? PriceLevel(rawValue: price_level!) : nil
         
-        return Place(id: place_id, name: name, rating: rating, numberOfRatings: user_ratings_total, iconURL: URL(string: icon)!, priceLevel: price, coordinates: geometry.toCoordinate)
+        return Place(id: place_id, name: name, rating: rating, numberOfRatings: user_ratings_total, iconURL: URL(string: icon)!, priceLevel: price, coordinates: geometry.toCoordinate, vicinity: vicinity)
     }
 }

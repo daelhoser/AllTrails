@@ -8,11 +8,44 @@
 import UIKit
 
 final class PlaceTableViewCell: UITableViewCell {
+    static let identifier = "PlaceCell"
+    
     private lazy var placeView: PlaceView = {
        let nib = UINib(nibName: "PlaceView", bundle: nil)
         
         return nib.instantiate(withOwner: nil, options: nil).first as! PlaceView
     }()
+    
+    var name: String? {
+        get {
+            placeView.name.text
+        }
+        set {
+            placeView.name.text = newValue
+        }
+    }
+    
+    var numberOfRatings: String? {
+        get {
+            placeView.numberOfRatings.text
+        }
+        set {
+            placeView.numberOfRatings.text = newValue
+        }
+    }
+    
+    var priceAndDetail: String? {
+        get {
+            placeView.priceAndDetail.text
+        }
+        set {
+            placeView.priceAndDetail.text = newValue
+        }
+    }
+
+    func setStarRating(with image: UIImage?) {
+        placeView.ratingImageView.image = image
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
