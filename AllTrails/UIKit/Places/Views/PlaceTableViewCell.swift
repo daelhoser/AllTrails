@@ -47,6 +47,11 @@ final class PlaceTableViewCell: UITableViewCell {
         placeView.ratingImageView.image = image
     }
     
+    func setPlaceImage(_ image: UIImage?) {
+        placeView.iconImageView.image = image
+        placeView.iconImageView.backgroundColor = image == nil ? UIColor.placeholderText : .white
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class PlacesTableViewController: UITableViewController {
+final class PlacesTableViewController: UITableViewController, UITableViewDataSourcePrefetching {
     lazy var loader: PlaceLoader = {
         let client = URLSessionHTTPClient(session: URLSession.shared)
         
@@ -18,6 +18,7 @@ final class PlacesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.prefetchDataSource = self
         tableView.register(PlaceTableViewCell.self, forCellReuseIdentifier: PlaceTableViewCell.identifier)
         loadMockData()
     }
@@ -31,6 +32,16 @@ final class PlacesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         return model[indexPath.row].tableView(tableView, cellForRowAt: indexPath)
+    }
+    
+    // MARK: - UITableViewDataSourcePrefetching
+
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        indexPaths.forEach { model[$0.row].loadImage() }
+    }
+
+    func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
+        indexPaths.forEach { model[$0.row].cancelImageLoad() }
     }
 
  
@@ -51,7 +62,7 @@ final class PlacesTableViewController: UITableViewController {
     }
     
     private func update(with places: [Place]) {
-        let viewModels = places.map { PlaceViewModel.init(model: $0) }
+        let viewModels = places.map { PlaceViewModel.init(model: $0, imageLoader: RemoteDataLoader(client: URLSessionHTTPClient(session: URLSession.shared))) }
         let controllers = viewModels.map { PlaceCellController.init(viewModel: $0) }
         model.removeAll()
         model.append(contentsOf: controllers)

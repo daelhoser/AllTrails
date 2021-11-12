@@ -6,9 +6,12 @@
 //
 
 import Foundation
+import UIKit
 
 final class PlaceViewModel {
     private let model: Place
+    private let imageLoader: DataLoader
+    private var task: RequestTask?
     
     var name: String {
         return model.name
@@ -32,7 +35,28 @@ final class PlaceViewModel {
         return "\(temp) • \(model.vicinity)"
     }
     
-    init(model: Place) {
+    var onImageCompletion: ((UIImage?) -> Void)?
+    
+    init(model: Place, imageLoader: DataLoader) {
         self.model = model
+        self.imageLoader = imageLoader
+    }
+    
+    func loadImage() {
+        guard task == nil else { return }
+        
+        task = imageLoader.request(from: model.iconURL, completion: { [weak self] (result) in
+            if let data = try? result.get() {
+                let image = UIImage(data: data)
+                self?.onImageCompletion?(image)
+            } else {
+                self?.onImageCompletion?(nil)
+            }
+        })
+    }
+    
+    func cancelImageLoad() {
+        task?.cancel()
+        task = nil
     }
 }

@@ -28,7 +28,24 @@ final class PlaceCellController: NSObject, UITableViewDataSource {
         cell?.priceAndDetail = viewModel.priceAndSupportingText
         updateCellStarRating()
         
+        viewModel.onImageCompletion = { [weak self] image in
+            // TODO: this is ugly. fix it.
+            DispatchQueue.main.async {
+                self?.cell?.setPlaceImage(image)
+            }
+        }
+        
+        viewModel.loadImage()
+        
         return cell!
+    }
+    
+    func loadImage() {
+        viewModel.loadImage()
+    }
+    
+    func cancelImageLoad() {
+        viewModel.cancelImageLoad()
     }
     
     private func updateCellStarRating() {
