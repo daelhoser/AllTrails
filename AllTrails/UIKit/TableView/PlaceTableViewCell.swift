@@ -8,10 +8,10 @@
 import UIKit
 
 final class PlaceTableViewCell: UITableViewCell {
-    private lazy var placeView: UIView = {
+    private lazy var placeView: PlaceView = {
        let nib = UINib(nibName: "PlaceView", bundle: nil)
         
-        return nib.instantiate(withOwner: self, options: nil).first as! UIView
+        return nib.instantiate(withOwner: nil, options: nil).first as! PlaceView
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
