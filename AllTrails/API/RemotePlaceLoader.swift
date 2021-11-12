@@ -20,7 +20,7 @@ final class RemotePlaceLoader: PlaceLoader {
         self.client = client
     }
     
-    func load(with request: Request, completion: @escaping (PlaceLoader.Result) -> Void) {
+    func load(with request: Request, completion: @escaping (PlaceLoader.Result) -> Void) -> RequestTask {
         client.request { [weak self] (data, response, error)  in
             guard let self = self else { return }
             

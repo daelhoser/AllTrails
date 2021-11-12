@@ -7,6 +7,10 @@
 
 import Foundation
 
+protocol HTTPClientTask {
+    func cancel()
+}
+
 protocol HttpClient {
-    func request(completion: @escaping (Data?, URLResponse?, Error?) -> Void)
+    func request(completion: @escaping (Data?, URLResponse?, Error?) -> Void) -> HTTPClientTask
 }
