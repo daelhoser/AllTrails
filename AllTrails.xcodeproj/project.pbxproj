@@ -100,6 +100,23 @@
 			path = Presentation;
 			sourceTree = "<group>";
 		};
+		5F250241273EE80B007D04B2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5F50726E273D89EF00C2981D /* PlaceTableViewCell.swift */,
+				5F50726F273D89EF00C2981D /* PlaceTableViewCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5F250242273EE818007D04B2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5F507265273D569C00C2981D /* PlacesTableViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		5F507259273D548700C2981D /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,7 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				5F507268273D575F00C2981D /* Shared */,
-				5F50726D273D89CC00C2981D /* TableView */,
+				5F50726D273D89CC00C2981D /* Places */,
 				5FEE524C273BFF88002C6A36 /* Main.storyboard */,
 			);
 			path = UIKit;
@@ -140,14 +157,13 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		5F50726D273D89CC00C2981D /* TableView */ = {
+		5F50726D273D89CC00C2981D /* Places */ = {
 			isa = PBXGroup;
 			children = (
-				5F507265273D569C00C2981D /* PlacesTableViewController.swift */,
-				5F50726E273D89EF00C2981D /* PlaceTableViewCell.swift */,
-				5F50726F273D89EF00C2981D /* PlaceTableViewCell.xib */,
+				5F250242273EE818007D04B2 /* Controllers */,
+				5F250241273EE80B007D04B2 /* Views */,
 			);
-			path = TableView;
+			path = Places;
 			sourceTree = "<group>";
 		};
 		5FEE523A273BFF88002C6A36 = {
