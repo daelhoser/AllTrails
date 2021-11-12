@@ -8,6 +8,8 @@
 import UIKit
 
 final class RootViewController: UIViewController {
+    @IBOutlet weak var topContainerView: UIView!
+    
     lazy var loader: PlaceLoader = {
         let client = URLSessionHTTPClient(session: URLSession.shared)
         let loader = RemotePlaceLoader(client: client)
@@ -29,7 +31,7 @@ final class RootViewController: UIViewController {
         listViewController.view.translatesAutoresizingMaskIntoConstraints = false
         listViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         listViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        listViewController.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        listViewController.view.topAnchor.constraint(equalTo: topContainerView.bottomAnchor).isActive = true
         listViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
         loadMockData()
