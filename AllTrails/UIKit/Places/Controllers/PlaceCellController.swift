@@ -29,10 +29,7 @@ final class PlaceCellController: NSObject, UITableViewDataSource {
         updateCellStarRating()
         
         viewModel.onImageCompletion = { [weak self] image in
-            // TODO: this is ugly. fix it.
-            DispatchQueue.main.async {
-                self?.cell?.setPlaceImage(image)
-            }
+            self?.cell?.setPlaceImage(image)
         }
         
         viewModel.loadImage()

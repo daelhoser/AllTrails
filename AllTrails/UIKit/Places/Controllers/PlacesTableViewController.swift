@@ -10,8 +10,9 @@ import UIKit
 final class PlacesTableViewController: UITableViewController, UITableViewDataSourcePrefetching {
     lazy var loader: PlaceLoader = {
         let client = URLSessionHTTPClient(session: URLSession.shared)
+        let loader = RemotePlaceLoader(client: client)
         
-        return RemotePlaceLoader(client: client)
+        return MainQueueDispatcherDecorator(decoratee: loader)
     }()
     private var model = [PlaceCellController]()
 
@@ -54,15 +55,14 @@ final class PlacesTableViewController: UITableViewController, UITableViewDataSou
             case .failure:
                 self?.update(with: [])
             case let .success(places):
-                DispatchQueue.main.async {
-                    self?.update(with: places)
-                }
+                self?.update(with: places)
             }
         }
     }
     
     private func update(with places: [Place]) {
-        let viewModels = places.map { PlaceViewModel.init(model: $0, imageLoader: RemoteDataLoader(client: URLSessionHTTPClient(session: URLSession.shared))) }
+        let dataLoader = RemoteDataLoader(client: URLSessionHTTPClient(session: URLSession.shared))
+        let viewModels = places.map { PlaceViewModel.init(model: $0, imageLoader: MainQueueDispatcherDecorator(decoratee: dataLoader)) }
         let controllers = viewModels.map { PlaceCellController.init(viewModel: $0) }
         model.removeAll()
         model.append(contentsOf: controllers)

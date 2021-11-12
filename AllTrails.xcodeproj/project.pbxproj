@@ -12,6 +12,7 @@
 		5F250246273EF5B4007D04B2 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F250245273EF5B4007D04B2 /* DataLoader.swift */; };
 		5F250248273EF635007D04B2 /* RemoteDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F250247273EF635007D04B2 /* RemoteDataLoader.swift */; };
 		5F25024D273EFA57007D04B2 /* HTTPURLResponse+StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F25024C273EFA57007D04B2 /* HTTPURLResponse+StatusCode.swift */; };
+		5F25024F273F066E007D04B2 /* MainQueueDispatcherDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F25024E273F066E007D04B2 /* MainQueueDispatcherDecorator.swift */; };
 		5F50725B273D54A200C2981D /* RemotePlaceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50725A273D54A200C2981D /* RemotePlaceLoader.swift */; };
 		5F50725E273D55CF00C2981D /* RootCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50725D273D55CF00C2981D /* RootCodable.swift */; };
 		5F507260273D55E200C2981D /* PlaceCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50725F273D55E200C2981D /* PlaceCodable.swift */; };
@@ -53,6 +54,7 @@
 		5F250245273EF5B4007D04B2 /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		5F250247273EF635007D04B2 /* RemoteDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataLoader.swift; sourceTree = "<group>"; };
 		5F25024C273EFA57007D04B2 /* HTTPURLResponse+StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+StatusCode.swift"; sourceTree = "<group>"; };
+		5F25024E273F066E007D04B2 /* MainQueueDispatcherDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatcherDecorator.swift; sourceTree = "<group>"; };
 		5F50725A273D54A200C2981D /* RemotePlaceLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePlaceLoader.swift; sourceTree = "<group>"; };
 		5F50725D273D55CF00C2981D /* RootCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCodable.swift; sourceTree = "<group>"; };
 		5F50725F273D55E200C2981D /* PlaceCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCodable.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				5FEE5276273C0297002C6A36 /* Domain */,
 				5F507267273D574500C2981D /* UIKit */,
 				5FEE5246273BFF88002C6A36 /* AppDelegate.swift */,
+				5F25024E273F066E007D04B2 /* MainQueueDispatcherDecorator.swift */,
 				5FEE5248273BFF88002C6A36 /* SceneDelegate.swift */,
 				5FEE524F273BFF8A002C6A36 /* Assets.xcassets */,
 				5FEE5251273BFF8A002C6A36 /* LaunchScreen.storyboard */,
@@ -380,6 +383,7 @@
 				5FEE527C273C0676002C6A36 /* LocationCoordinate.swift in Sources */,
 				5F50725E273D55CF00C2981D /* RootCodable.swift in Sources */,
 				5F507260273D55E200C2981D /* PlaceCodable.swift in Sources */,
+				5F25024F273F066E007D04B2 /* MainQueueDispatcherDecorator.swift in Sources */,
 				5FEE5249273BFF88002C6A36 /* SceneDelegate.swift in Sources */,
 				5F507270273D89EF00C2981D /* PlaceTableViewCell.swift in Sources */,
 			);
