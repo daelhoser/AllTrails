@@ -19,10 +19,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let rootViewController = storyboard.instantiateInitialViewController() as! RootViewController
-        window?.rootViewController = rootViewController
+        window?.rootViewController = createRootView()
         window?.makeKeyAndVisible()
+    }
+    
+    private func createRootView() -> RootViewController {
+        let client = URLSessionHTTPClient(session: .shared)
+        let placeLoader = RemotePlaceLoader(client: client)
+        let dataLoader = RemoteDataLoader(client: client)
+        
+        return RootViewComposer.compose(with: placeLoader, and: dataLoader)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -7,23 +7,26 @@
 
 import UIKit
 
+final class RootViewComposer {
+    private init() {}
+    
+    static func compose(with loader: PlaceLoader, and dataLoader: DataLoader) -> RootViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let rootViewController = storyboard.instantiateInitialViewController() as! RootViewController
+        rootViewController.loader = MainQueueDispatcherDecorator(decoratee: loader)
+        rootViewController.listViewController = PlaceViewComposer.compose(with: dataLoader)
+        
+        return rootViewController
+    }
+}
+
 final class RootViewController: UIViewController {
     @IBOutlet weak var topContainerView: UIView!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var filterButton: UIButton!
 
-    lazy var loader: PlaceLoader = {
-        let client = URLSessionHTTPClient(session: URLSession.shared)
-        let loader = RemotePlaceLoader(client: client)
-        
-        return MainQueueDispatcherDecorator(decoratee: loader)
-    }()
-
-    lazy var listViewController: PlacesTableViewController = {
-        let client = URLSessionHTTPClient(session: .shared)
-        let loader = RemoteDataLoader(client: client)
-        return PlaceViewComposer.compose(with: loader)
-    }()
+    var loader: PlaceLoader!
+    var listViewController: PlacesTableViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +41,6 @@ final class RootViewController: UIViewController {
     @IBAction func onSearchButtonTap() {
         print("Button Tapped")
     }
-    
-    
     
     // MARK: - Helper Methods
     
