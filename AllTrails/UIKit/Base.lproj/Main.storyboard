@@ -68,19 +68,29 @@
                                         </state>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search for a restaurant" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Mk-Ux-bGP">
-                                        <rect key="frame" x="84" y="64" width="306" height="34"/>
+                                        <rect key="frame" x="84" y="61.5" width="306" height="39"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" textContentType="name"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zXx-XX-62T">
+                                        <rect key="frame" x="84" y="64" width="306" height="34"/>
+                                        <connections>
+                                            <action selector="onSearchButtonTap" destination="YTX-zW-ifM" eventType="touchUpInside" id="5oB-Vx-KVs"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="114" id="52i-ge-gZy"/>
+                                    <constraint firstItem="zXx-XX-62T" firstAttribute="height" secondItem="7Mk-Ux-bGP" secondAttribute="height" multiplier="0.882353" id="6sr-1o-iiE"/>
                                     <constraint firstItem="7Mk-Ux-bGP" firstAttribute="leading" secondItem="HKL-HP-qzf" secondAttribute="trailing" constant="8" id="9gy-Y6-zWM"/>
                                     <constraint firstItem="7Mk-Ux-bGP" firstAttribute="centerY" secondItem="HKL-HP-qzf" secondAttribute="centerY" id="BCR-jz-344"/>
                                     <constraint firstItem="HKL-HP-qzf" firstAttribute="leading" secondItem="vHF-g3-voW" secondAttribute="leading" constant="24" id="GF4-8b-Spf"/>
+                                    <constraint firstItem="zXx-XX-62T" firstAttribute="width" secondItem="7Mk-Ux-bGP" secondAttribute="width" id="Mff-4c-oat"/>
+                                    <constraint firstItem="zXx-XX-62T" firstAttribute="centerX" secondItem="7Mk-Ux-bGP" secondAttribute="centerX" id="Mq3-XP-qra"/>
                                     <constraint firstItem="DVM-LS-fL3" firstAttribute="top" secondItem="vHF-g3-voW" secondAttribute="top" constant="18" id="VMg-Ud-PbX"/>
                                     <constraint firstAttribute="trailing" secondItem="7Mk-Ux-bGP" secondAttribute="trailing" constant="24" id="ZLN-dr-3Io"/>
+                                    <constraint firstItem="zXx-XX-62T" firstAttribute="centerY" secondItem="7Mk-Ux-bGP" secondAttribute="centerY" id="jZ6-ga-Zbf"/>
                                     <constraint firstItem="HKL-HP-qzf" firstAttribute="top" secondItem="DVM-LS-fL3" secondAttribute="bottom" constant="16" id="w6G-B5-dVT"/>
                                     <constraint firstItem="DVM-LS-fL3" firstAttribute="centerX" secondItem="vHF-g3-voW" secondAttribute="centerX" id="waI-K3-0FW"/>
                                 </constraints>
@@ -96,7 +106,6 @@
                             <constraint firstItem="Qdv-SQ-2P9" firstAttribute="bottom" secondItem="Y6X-a7-Qfg" secondAttribute="bottom" constant="12" id="xUP-ya-tpm"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="UGr-Me-EfC"/>
                     <connections>
                         <outlet property="filterButton" destination="HKL-HP-qzf" id="Y3L-Px-mP2"/>
                         <outlet property="textField" destination="7Mk-Ux-bGP" id="Ggj-th-nVK"/>

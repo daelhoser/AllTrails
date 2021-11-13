@@ -35,6 +35,12 @@ final class RootViewController: UIViewController {
         loadMockData()
     }
     
+    @IBAction func onSearchButtonTap() {
+        print("Button Tapped")
+    }
+    
+    
+    
     // MARK: - Helper Methods
     
     private func addListView() {
