@@ -6,13 +6,12 @@
 //
 
 import Foundation
-import UIKit
 
-final class PlaceViewModel {
+final class PlaceViewModel<Image> {
     private let model: Place
     private let imageLoader: DataLoader
     private var task: RequestTask?
-    
+    private let imageTransformer: (Data) -> Image?
     var name: String {
         return model.name
     }
@@ -35,22 +34,25 @@ final class PlaceViewModel {
         return "\(temp) • \(model.vicinity)"
     }
     
-    var onImageCompletion: ((UIImage?) -> Void)?
+    var onImageCompletion: ((Image?) -> Void)?
     
-    init(model: Place, imageLoader: DataLoader) {
+    init(model: Place, imageLoader: DataLoader, imageTransformer: @escaping (Data) -> Image?) {
         self.model = model
         self.imageLoader = imageLoader
+        self.imageTransformer = imageTransformer
     }
     
     func loadImage() {
         guard task == nil else { return }
         
         task = imageLoader.request(from: model.iconURL, completion: { [weak self] (result) in
+            guard let self = self else { return }
+            
             if let data = try? result.get() {
-                let image = UIImage(data: data)
-                self?.onImageCompletion?(image)
+                let image = self.imageTransformer(data)
+                self.onImageCompletion?(image)
             } else {
-                self?.onImageCompletion?(nil)
+                self.onImageCompletion?(nil)
             }
         })
     }

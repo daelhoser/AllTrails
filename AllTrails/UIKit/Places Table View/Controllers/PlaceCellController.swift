@@ -9,10 +9,10 @@ import Foundation
 import UIKit
 
 final class PlaceCellController: NSObject, UITableViewDataSource {
-    private let viewModel: PlaceViewModel
+    private let viewModel: PlaceViewModel<UIImage>
     private var cell: PlaceTableViewCell?
     
-    init(viewModel: PlaceViewModel) {
+    init(viewModel: PlaceViewModel<UIImage>) {
         self.viewModel = viewModel
     }
     

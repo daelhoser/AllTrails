@@ -41,7 +41,7 @@ final class PlacesTableViewController: UITableViewController, UITableViewDataSou
     }
 
     func update(with places: [Place]) {
-        let viewModels = places.map { PlaceViewModel.init(model: $0, imageLoader: dataLoader) }
+        let viewModels = places.map { PlaceViewModel<UIImage>.init(model: $0, imageLoader: dataLoader) { UIImage(data: $0) } }
         let controllers = viewModels.map { PlaceCellController.init(viewModel: $0) }
         model.removeAll()
         model.append(contentsOf: controllers)
