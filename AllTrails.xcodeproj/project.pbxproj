@@ -175,6 +175,13 @@
 			path = Composers;
 			sourceTree = "<group>";
 		};
+		5F25025A2740157A007D04B2 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		5F507259273D548700C2981D /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +208,7 @@
 		5F507267273D574500C2981D /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				5F25025A2740157A007D04B2 /* Search */,
 				5F250250273F089C007D04B2 /* RootView */,
 				5F507268273D575F00C2981D /* Shared */,
 				5F50726D273D89CC00C2981D /* Places Table View */,
