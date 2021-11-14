@@ -25,8 +25,12 @@ final class RootViewController: UIViewController {
         loadMockData()
     }
     
+    let searchVC = SearchPlaceTableViewController()
+    
     @IBAction func onSearchButtonTap() {
         print("Button Tapped")
+        let navVC = UINavigationController(rootViewController: searchVC)
+        present(navVC, animated: true, completion: nil)
     }
     
     // MARK: - Helper Methods
