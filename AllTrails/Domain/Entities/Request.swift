@@ -11,5 +11,5 @@ struct Request {
     let keyword: String?
     let coordinates: LocationCoordinate
     let radius: Int
-    let type: String
+    let type: String = "restaurant"
 }

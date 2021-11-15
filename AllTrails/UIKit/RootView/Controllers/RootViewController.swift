@@ -44,7 +44,7 @@ final class RootViewController: UIViewController {
 
     private func loadMockData() {
         let location = LocationCoordinate(latitude: 2020, longitude: 2020)
-        _ = loader.load(with: Request(keyword: nil, coordinates: location, radius: 0, type: "")) { [weak self] (result) in
+        _ = loader.load(with: Request(keyword: nil, coordinates: location, radius: 0)) { [weak self] (result) in
             switch result {
             case .failure:
                 self?.listViewController.update(with: [])
@@ -58,6 +58,7 @@ final class RootViewController: UIViewController {
 extension RootViewController: SearchPlaceDelegate {
     func didSelected(place: Place, for viewController: SearchPlaceTableViewController) {
         viewController.dismiss(animated: true) {
+            self.textField.text = place.name
             self.listViewController.update(with: [place])
         }
     }
