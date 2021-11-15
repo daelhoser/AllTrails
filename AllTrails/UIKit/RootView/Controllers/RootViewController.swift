@@ -14,6 +14,7 @@ final class RootViewController: UIViewController {
 
     var loader: PlaceLoader!
     var listViewController: PlacesTableViewController!
+    var onSearchButtonTapped: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +26,8 @@ final class RootViewController: UIViewController {
         loadMockData()
     }
     
-    let searchVC = SearchPlaceTableViewController()
-    
     @IBAction func onSearchButtonTap() {
-        print("Button Tapped")
-        let navVC = UINavigationController(rootViewController: searchVC)
-        present(navVC, animated: true, completion: nil)
+        onSearchButtonTapped?()
     }
     
     // MARK: - Helper Methods
