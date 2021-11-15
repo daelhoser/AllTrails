@@ -76,7 +76,11 @@ final class RemotePlaceLoader: PlaceLoader {
     }
     
     private func createURLRequest(from request: Request) -> URLRequest {
-        let urlString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=cruise&location=-33.8670522%2C151.1957362&radius=1500&type=restaurant&key=AIzaSyDQSd210wKX_7cz9MELkxhaEOUhFP0AkSk" //"\(baseURLString)/place/nearbysearch/json?"
+        var urlString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522%2C151.1957362&radius=1500&type=restaurant&key=AIzaSyDQSd210wKX_7cz9MELkxhaEOUhFP0AkSk"
+
+        if let queryString = request.keyword?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+            urlString = urlString + "&keyword=\(queryString)" //"\(baseURLString)/place/nearbysearch/json?"
+        }
         
         guard let url = URL(string: urlString) else {
             fatalError("Developer Error")

@@ -7,11 +7,22 @@
 
 import UIKit
 
-final class PlacesTableViewController: UITableViewController, UITableViewDataSourcePrefetching {
+class PlacesTableViewController: UITableViewController, UITableViewDataSourcePrefetching {
     private var model = [PlaceCellController]()
+    private let dataLoader: DataLoader
     
-    var dataLoader: DataLoader!
-
+    init(dataLoader: DataLoader) {
+        self.dataLoader = dataLoader
+        
+        super.init(nibName: nil, bundle: nil)
+        
+        self.tableView.separatorStyle = .none
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
