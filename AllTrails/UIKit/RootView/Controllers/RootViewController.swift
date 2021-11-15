@@ -54,3 +54,15 @@ final class RootViewController: UIViewController {
         }
     }
 }
+
+extension RootViewController: SearchPlaceDelegate {
+    func didSelected(place: Place, for viewController: SearchPlaceTableViewController) {
+        viewController.dismiss(animated: true) {
+            self.listViewController.update(with: [place])
+        }
+    }
+    
+    func didCancelledSearch(for viewController: SearchPlaceTableViewController) {
+        viewController.dismiss(animated: true, completion: nil)
+    }
+}

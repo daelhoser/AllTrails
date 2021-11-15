@@ -12,6 +12,10 @@ final class PlaceCellController: NSObject, UITableViewDataSource {
     private let viewModel: PlaceViewModel<UIImage>
     private var cell: PlaceTableViewCell?
     
+    var model: Place {
+        viewModel.model
+    }
+    
     init(viewModel: PlaceViewModel<UIImage>) {
         self.viewModel = viewModel
     }

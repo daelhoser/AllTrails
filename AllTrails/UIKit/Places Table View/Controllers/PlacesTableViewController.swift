@@ -8,7 +8,7 @@
 import UIKit
 
 class PlacesTableViewController: UITableViewController, UITableViewDataSourcePrefetching {
-    private var model = [PlaceCellController]()
+    private(set) var model = [PlaceCellController]()
     private let dataLoader: DataLoader
     
     init(dataLoader: DataLoader) {

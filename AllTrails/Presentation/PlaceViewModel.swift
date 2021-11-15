@@ -8,7 +8,7 @@
 import Foundation
 
 final class PlaceViewModel<Image> {
-    private let model: Place
+    let model: Place
     private let imageLoader: DataLoader
     private var task: RequestTask?
     private let imageTransformer: (Data) -> Image?

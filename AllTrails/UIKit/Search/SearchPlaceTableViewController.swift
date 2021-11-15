@@ -7,11 +7,18 @@
 
 import UIKit
 
+protocol SearchPlaceDelegate: AnyObject {
+    func didSelected(place: Place, for viewController: SearchPlaceTableViewController)
+    func didCancelledSearch(for viewController: SearchPlaceTableViewController)
+}
+
 // TODO; constructor variables need to be included
 final class SearchPlaceTableViewController: PlacesTableViewController, UISearchResultsUpdating, UISearchControllerDelegate {
     private let searchController = UISearchController(searchResultsController: nil)
     private let placeLoader: PlaceLoader
     private var task: RequestTask?
+    
+    weak var delegate: SearchPlaceDelegate?
     
     init(placeLoader: PlaceLoader, dataLoader: DataLoader) {
         self.placeLoader = placeLoader
@@ -47,6 +54,9 @@ final class SearchPlaceTableViewController: PlacesTableViewController, UISearchR
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let placeController = model[indexPath.row]
+        searchController.isActive = false
+        delegate?.didSelected(place: placeController.model, for: self)
     }
     
     private func addCancelButton() {
@@ -59,7 +69,7 @@ final class SearchPlaceTableViewController: PlacesTableViewController, UISearchR
         task?.cancel()
         task = nil
         searchController.searchBar.resignFirstResponder()
-        dismiss(animated: true, completion: nil)
+        delegate?.didCancelledSearch(for: self)
     }
     
     func updateSearchResults(for searchController: UISearchController) {
