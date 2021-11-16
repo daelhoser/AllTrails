@@ -11,15 +11,20 @@ final class RootViewController: UIViewController {
     @IBOutlet weak var topContainerView: UIView!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var filterButton: UIButton!
+    @IBOutlet var mapContainerView: UIView!
+    @IBOutlet var listContainerView: UIView!
 
     var loader: PlaceLoader!
     var listViewController: PlacesTableViewController!
+    var mapViewController: MapViewController!
     var onSearchButtonTapped: (() -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        addListView()
+        addView(mapViewController, to: mapContainerView)
+        mapViewController.view.isHidden = true
+        addView(listViewController, to: listContainerView)
         filterButton.layer.borderColor = #colorLiteral(red: 0.9019607843, green: 0.9019607843, blue: 0.9019607843, alpha: 1).cgColor
         filterButton.layer.cornerRadius = 6.0
         filterButton.layer.borderWidth = 1.0
@@ -30,16 +35,30 @@ final class RootViewController: UIViewController {
         onSearchButtonTapped?()
     }
     
+    @IBAction func flipButtonTapped(_ button: UIButton) {
+        let viewToHide = !button.isSelected ? listViewController.view! : mapViewController.view!
+        let viewToRender = !button.isSelected ? mapViewController.view! : listViewController.view!
+        let containerToRender = !button.isSelected ? mapContainerView! : listContainerView!
+        let flipAnimation = !button.isSelected ? UIView.AnimationOptions.transitionFlipFromRight : UIView.AnimationOptions.transitionFlipFromLeft
+        button.isSelected = !button.isSelected
+        button.isEnabled = false
+        
+        let transitionOptions: UIView.AnimationOptions = [flipAnimation]
+
+        UIView.transition(from: viewToHide, to: viewToRender, duration: 0.4, options: transitionOptions) { _ in
+            viewToHide.isHidden = true
+            viewToRender.isHidden = false
+            viewToRender.alignTo(parent: containerToRender)
+            button.isEnabled = true
+        }
+    }
+    
     // MARK: - Helper Methods
     
-    private func addListView() {
-        addChild(listViewController)
-        view.insertSubview(listViewController.view, at: 0)
-        listViewController.view.translatesAutoresizingMaskIntoConstraints = false
-        listViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        listViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        listViewController.view.topAnchor.constraint(equalTo: topContainerView.bottomAnchor).isActive = true
-        listViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    private func addView(_ viewController: UIViewController, to containerView: UIView) {
+        addChild(viewController)
+        containerView.addSubview(viewController.view)
+        viewController.view.alignTo(parent: containerView)
     }
 
     private func loadMockData() {
@@ -66,5 +85,15 @@ extension RootViewController: SearchPlaceDelegate {
     
     func didCancelledSearch(for viewController: SearchPlaceTableViewController) {
         viewController.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension UIView {
+    func alignTo(parent: UIView) {
+        translatesAutoresizingMaskIntoConstraints = false
+        leadingAnchor.constraint(equalTo: parent.leadingAnchor).isActive = true
+        trailingAnchor.constraint(equalTo: parent.trailingAnchor).isActive = true
+        topAnchor.constraint(equalTo: parent.topAnchor).isActive = true
+        bottomAnchor.constraint(equalTo: parent.bottomAnchor).isActive = true
     }
 }
