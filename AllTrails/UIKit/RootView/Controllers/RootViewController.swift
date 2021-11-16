@@ -43,8 +43,9 @@ final class RootViewController: UIViewController {
     }
 
     private func loadMockData() {
-        let location = LocationCoordinate(latitude: 2020, longitude: 2020)
-        _ = loader.load(with: Request(keyword: nil, coordinates: location, radius: 0)) { [weak self] (result) in
+        //https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=cruise&location=-33.8670522%2C151.1957362&radius=1500&type=restaurant&key=AIzaSyDQSd210wKX_7cz9MELkxhaEOUhFP0AkSk
+        let location = LocationCoordinate(latitude: -33.8670522, longitude: 151.1957362)
+        _ = loader.load(with: Request(keyword: "cruise", coordinates: location, radius: 1500)) { [weak self] (result) in
             switch result {
             case .failure:
                 self?.listViewController.update(with: [])

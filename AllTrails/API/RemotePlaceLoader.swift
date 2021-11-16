@@ -9,6 +9,7 @@ import Foundation
 
 final class RemotePlaceLoader: PlaceLoader {
     private let baseURLString = "https://maps.googleapis.com/maps/api"
+    private let key = "AIzaSyDQSd210wKX_7cz9MELkxhaEOUhFP0AkSk"
     private let client: HttpClient
     private let decoder = JSONDecoder()
     
@@ -76,18 +77,17 @@ final class RemotePlaceLoader: PlaceLoader {
     }
     
     private func createURLRequest(from request: Request) -> URLRequest {
-        var urlString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522%2C151.1957362&radius=1500&type=restaurant&key=AIzaSyDQSd210wKX_7cz9MELkxhaEOUhFP0AkSk"
+        var components = URLComponents(string: baseURLString)!
+        components.path = "/maps/api/place/nearbysearch/json"
+        components.queryItems = [
+            URLQueryItem(name: "location", value: "\(request.coordinates.latitude),\(request.coordinates.longitude)"),
+            URLQueryItem(name: "keyword", value: request.keyword?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)),
+            URLQueryItem(name: "type", value: "restaurant"),
+            URLQueryItem(name: "key", value: key),
+            URLQueryItem(name: "radius", value: "\(request.radius)")
+        ]
 
-        if let queryString = request.keyword?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
-            urlString = urlString + "&keyword=\(queryString)" //"\(baseURLString)/place/nearbysearch/json?"
-        }
-        
-        guard let url = URL(string: urlString) else {
-            fatalError("Developer Error")
-        }
                 
-        var request = URLRequest(url: url)
-//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        return request
+        return URLRequest(url: components.url!)
     }
 }

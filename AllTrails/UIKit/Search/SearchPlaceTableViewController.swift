@@ -103,8 +103,8 @@ final class SearchPlaceTableViewController: PlacesTableViewController, UISearchR
     
     private func request(with text: String) -> Request {
         // TODO: Complete
-        let location = LocationCoordinate(latitude: 2020, longitude: 2020)
+        let location = LocationCoordinate(latitude: -33.8670522, longitude: 151.1957362)
 
-        return Request(keyword: text, coordinates: location, radius: 50, type: "")
+        return Request(keyword: text, coordinates: location, radius: 1500)
     }
 }
