@@ -23,8 +23,8 @@ final class RootViewController: UIViewController {
         super.viewDidLoad()
 
         addView(mapViewController, to: mapContainerView)
-        mapViewController.view.isHidden = true
         addView(listViewController, to: listContainerView)
+        listViewController.view.isHidden = true
         filterButton.layer.borderColor = #colorLiteral(red: 0.9019607843, green: 0.9019607843, blue: 0.9019607843, alpha: 1).cgColor
         filterButton.layer.cornerRadius = 6.0
         filterButton.layer.borderWidth = 1.0

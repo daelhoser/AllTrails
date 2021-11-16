@@ -93,7 +93,7 @@
                                     <constraint firstItem="DVM-LS-fL3" firstAttribute="centerX" secondItem="vHF-g3-voW" secondAttribute="centerX" id="waI-K3-0FW"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6X-a7-Qfg">
+                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6X-a7-Qfg">
                                 <rect key="frame" x="148" y="790" width="118" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="PUj-6z-PV0"/>
