@@ -45,7 +45,7 @@ final class RootViewController: UIViewController {
         
         let transitionOptions: UIView.AnimationOptions = [flipAnimation]
 
-        UIView.transition(from: viewToHide, to: viewToRender, duration: 0.4, options: transitionOptions) { _ in
+        UIView.transition(from: viewToHide, to: viewToRender, duration: 0.3, options: transitionOptions) { _ in
             viewToHide.isHidden = true
             viewToRender.isHidden = false
             viewToRender.alignTo(parent: containerToRender)
