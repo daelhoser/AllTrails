@@ -26,7 +26,7 @@ final class RootViewComposer {
     }
     
     private static func presentSearchVC(_ placeLoader: PlaceLoader, dataLoader: DataLoader, on viewController: RootViewController) {
-        let searchVC = SearchPlaceTableViewController(placeLoader: MainQueueDispatcherDecorator(decoratee: placeLoader), dataLoader: MainQueueDispatcherDecorator(decoratee: dataLoader))
+        let searchVC = SearchPlaceComposer.compose(with: placeLoader, dataLoader: dataLoader)
         searchVC.delegate = viewController
         let navVC = UINavigationController(rootViewController: searchVC)
         viewController.present(navVC, animated: true, completion: nil)

@@ -27,6 +27,7 @@
 		5F50726C273D57DE00C2981D /* PlaceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F50726B273D57DE00C2981D /* PlaceView.xib */; };
 		5F507270273D89EF00C2981D /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50726E273D89EF00C2981D /* PlaceTableViewCell.swift */; };
 		5F507271273D89EF00C2981D /* PlaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F50726F273D89EF00C2981D /* PlaceTableViewCell.xib */; };
+		5F5D049A2743356D004CE963 /* SearchPlaceComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5D04992743356D004CE963 /* SearchPlaceComposer.swift */; };
 		5FEE5247273BFF88002C6A36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE5246273BFF88002C6A36 /* AppDelegate.swift */; };
 		5FEE5249273BFF88002C6A36 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE5248273BFF88002C6A36 /* SceneDelegate.swift */; };
 		5FEE524E273BFF88002C6A36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FEE524C273BFF88002C6A36 /* Main.storyboard */; };
@@ -73,6 +74,7 @@
 		5F50726B273D57DE00C2981D /* PlaceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceView.xib; sourceTree = "<group>"; };
 		5F50726E273D89EF00C2981D /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewCell.swift; sourceTree = "<group>"; };
 		5F50726F273D89EF00C2981D /* PlaceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceTableViewCell.xib; sourceTree = "<group>"; };
+		5F5D04992743356D004CE963 /* SearchPlaceComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceComposer.swift; sourceTree = "<group>"; };
 		5FEE5243273BFF88002C6A36 /* AllTrails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllTrails.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FEE5246273BFF88002C6A36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5FEE5248273BFF88002C6A36 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -182,7 +184,8 @@
 		5F25025A2740157A007D04B2 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				5F25025D2740B446007D04B2 /* SearchPlaceTableViewController.swift */,
+				5F5D049827433561004CE963 /* Composer */,
+				5F5D049B27433585004CE963 /* Controllers */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -237,6 +240,22 @@
 				5F250253273F0B75007D04B2 /* Composer */,
 			);
 			path = "Places Table View";
+			sourceTree = "<group>";
+		};
+		5F5D049827433561004CE963 /* Composer */ = {
+			isa = PBXGroup;
+			children = (
+				5F5D04992743356D004CE963 /* SearchPlaceComposer.swift */,
+			);
+			path = Composer;
+			sourceTree = "<group>";
+		};
+		5F5D049B27433585004CE963 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5F25025D2740B446007D04B2 /* SearchPlaceTableViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		5FEE523A273BFF88002C6A36 = {
@@ -418,6 +437,7 @@
 				5F25024D273EFA57007D04B2 /* HTTPURLResponse+StatusCode.swift in Sources */,
 				5F250246273EF5B4007D04B2 /* DataLoader.swift in Sources */,
 				5F25025927400EA0007D04B2 /* RootViewComposer.swift in Sources */,
+				5F5D049A2743356D004CE963 /* SearchPlaceComposer.swift in Sources */,
 				5FEE527E273C068D002C6A36 /* PriceLevel.swift in Sources */,
 				5FEE5278273C02BF002C6A36 /* PlaceLoader.swift in Sources */,
 				5F50726A273D57C200C2981D /* PlaceView.swift in Sources */,
