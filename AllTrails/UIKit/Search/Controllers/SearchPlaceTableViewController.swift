@@ -32,7 +32,7 @@ final class SearchPlaceTableViewController: PlacesTableViewController, UISearchR
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Search for a restaurant"
+        title = SearchPlaceViewModel.title
         addCancelButton()
         setupSearchController()
     }
@@ -42,7 +42,7 @@ final class SearchPlaceTableViewController: PlacesTableViewController, UISearchR
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.showsCancelButton = false
-        searchController.searchBar.placeholder = "Search for a restaurant"
+        searchController.searchBar.placeholder = SearchPlaceViewModel.placeHolder
         searchController.searchResultsUpdater = self
         searchController.delegate = self
     }
