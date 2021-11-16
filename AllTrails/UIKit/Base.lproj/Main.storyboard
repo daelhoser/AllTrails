@@ -16,14 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6X-a7-Qfg">
-                                <rect key="frame" x="148" y="790" width="118" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="PUj-6z-PV0"/>
-                                    <constraint firstAttribute="width" constant="118" id="TnI-GX-JZb"/>
-                                </constraints>
-                                <state key="normal" image="Map Button"/>
-                            </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdn-Zt-sai" userLabel="Map Container View">
+                                <rect key="frame" x="0.0" y="158" width="414" height="738"/>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gXy-we-itB" userLabel="List Container View">
+                                <rect key="frame" x="0.0" y="158" width="414" height="738"/>
+                            </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vHF-g3-voW" userLabel="TopContainerView">
                                 <rect key="frame" x="0.0" y="44" width="414" height="114"/>
                                 <subviews>
@@ -95,19 +93,41 @@
                                     <constraint firstItem="DVM-LS-fL3" firstAttribute="centerX" secondItem="vHF-g3-voW" secondAttribute="centerX" id="waI-K3-0FW"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6X-a7-Qfg">
+                                <rect key="frame" x="148" y="790" width="118" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="PUj-6z-PV0"/>
+                                    <constraint firstAttribute="width" constant="118" id="TnI-GX-JZb"/>
+                                </constraints>
+                                <state key="normal" image="Map Button"/>
+                                <state key="selected" image="List Button"/>
+                                <connections>
+                                    <action selector="flipButtonTapped:" destination="YTX-zW-ifM" eventType="touchUpInside" id="DeR-ok-KlO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Qdv-SQ-2P9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="gXy-we-itB" firstAttribute="top" secondItem="vHF-g3-voW" secondAttribute="bottom" id="2py-46-ILR"/>
                             <constraint firstItem="vHF-g3-voW" firstAttribute="centerX" secondItem="Y6X-a7-Qfg" secondAttribute="centerX" id="8h5-p0-clO"/>
                             <constraint firstItem="vHF-g3-voW" firstAttribute="top" secondItem="Qdv-SQ-2P9" secondAttribute="top" id="AAe-bB-OXE"/>
+                            <constraint firstItem="pdn-Zt-sai" firstAttribute="leading" secondItem="40r-qB-3Ux" secondAttribute="leading" id="VwF-En-sS6"/>
+                            <constraint firstAttribute="bottom" secondItem="pdn-Zt-sai" secondAttribute="bottom" id="efU-gt-TwG"/>
                             <constraint firstItem="Y6X-a7-Qfg" firstAttribute="centerX" secondItem="Qdv-SQ-2P9" secondAttribute="centerX" id="mfD-Ql-2E7"/>
+                            <constraint firstItem="gXy-we-itB" firstAttribute="trailing" secondItem="Qdv-SQ-2P9" secondAttribute="trailing" id="rqO-gR-Uyh"/>
                             <constraint firstItem="vHF-g3-voW" firstAttribute="leading" secondItem="Qdv-SQ-2P9" secondAttribute="leading" id="uf5-MH-pFh"/>
+                            <constraint firstItem="gXy-we-itB" firstAttribute="leading" secondItem="Qdv-SQ-2P9" secondAttribute="leading" id="w1f-1p-Ozw"/>
+                            <constraint firstItem="pdn-Zt-sai" firstAttribute="top" secondItem="vHF-g3-voW" secondAttribute="bottom" id="wg9-gM-Llm"/>
                             <constraint firstItem="Qdv-SQ-2P9" firstAttribute="bottom" secondItem="Y6X-a7-Qfg" secondAttribute="bottom" constant="12" id="xUP-ya-tpm"/>
+                            <constraint firstAttribute="bottom" secondItem="gXy-we-itB" secondAttribute="bottom" id="xuG-9d-t3l"/>
+                            <constraint firstItem="pdn-Zt-sai" firstAttribute="trailing" secondItem="Qdv-SQ-2P9" secondAttribute="trailing" id="zkw-aH-3S4"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="filterButton" destination="HKL-HP-qzf" id="Y3L-Px-mP2"/>
+                        <outlet property="listContainerView" destination="gXy-we-itB" id="iHN-Kx-bew"/>
+                        <outlet property="mapContainerView" destination="pdn-Zt-sai" id="VL2-pR-s2a"/>
                         <outlet property="textField" destination="7Mk-Ux-bGP" id="Ggj-th-nVK"/>
                         <outlet property="topContainerView" destination="vHF-g3-voW" id="ywD-10-DLA"/>
                     </connections>
@@ -116,8 +136,35 @@
             </objects>
             <point key="canvasLocation" x="-105.79710144927537" y="72.991071428571431"/>
         </scene>
+        <!--Map View Controller-->
+        <scene sceneID="XPy-Ld-dWh">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" id="z9m-ZA-lIc" customClass="MapViewController" customModule="AllTrails" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3gn-lU-7Za">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qKA-f0-pFc">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9PJ-ei-CBy"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9PJ-ei-CBy" firstAttribute="bottom" secondItem="qKA-f0-pFc" secondAttribute="bottom" id="1ts-8k-Rob"/>
+                            <constraint firstItem="9PJ-ei-CBy" firstAttribute="trailing" secondItem="qKA-f0-pFc" secondAttribute="trailing" id="8gc-RW-JGu"/>
+                            <constraint firstItem="qKA-f0-pFc" firstAttribute="leading" secondItem="9PJ-ei-CBy" secondAttribute="leading" id="Lo1-sM-itY"/>
+                            <constraint firstItem="qKA-f0-pFc" firstAttribute="top" secondItem="9PJ-ei-CBy" secondAttribute="top" id="YO3-vX-jOp"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YG3-jl-hOv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="654" y="73"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="List Button" width="118" height="60"/>
         <image name="Logo" width="128" height="30"/>
         <image name="Map Button" width="118" height="60"/>
         <systemColor name="systemBackgroundColor">
