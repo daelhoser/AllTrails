@@ -87,13 +87,3 @@ extension RootViewController: SearchPlaceDelegate {
         viewController.dismiss(animated: true, completion: nil)
     }
 }
-
-extension UIView {
-    func alignTo(parent: UIView) {
-        translatesAutoresizingMaskIntoConstraints = false
-        leadingAnchor.constraint(equalTo: parent.leadingAnchor).isActive = true
-        trailingAnchor.constraint(equalTo: parent.trailingAnchor).isActive = true
-        topAnchor.constraint(equalTo: parent.topAnchor).isActive = true
-        bottomAnchor.constraint(equalTo: parent.bottomAnchor).isActive = true
-    }
-}

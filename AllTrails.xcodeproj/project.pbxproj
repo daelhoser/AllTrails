@@ -17,6 +17,7 @@
 		5F250255273F0B89007D04B2 /* PlaceViewComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F250254273F0B89007D04B2 /* PlaceViewComposer.swift */; };
 		5F25025927400EA0007D04B2 /* RootViewComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F25025827400EA0007D04B2 /* RootViewComposer.swift */; };
 		5F25025E2740B446007D04B2 /* SearchPlaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F25025D2740B446007D04B2 /* SearchPlaceTableViewController.swift */; };
+		5F32B94F27441348006C0BBD /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F32B94E27441348006C0BBD /* UIView+Layout.swift */; };
 		5F50725B273D54A200C2981D /* RemotePlaceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50725A273D54A200C2981D /* RemotePlaceLoader.swift */; };
 		5F50725E273D55CF00C2981D /* RootCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50725D273D55CF00C2981D /* RootCodable.swift */; };
 		5F507260273D55E200C2981D /* PlaceCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F50725F273D55E200C2981D /* PlaceCodable.swift */; };
@@ -67,6 +68,7 @@
 		5F250254273F0B89007D04B2 /* PlaceViewComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewComposer.swift; sourceTree = "<group>"; };
 		5F25025827400EA0007D04B2 /* RootViewComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewComposer.swift; sourceTree = "<group>"; };
 		5F25025D2740B446007D04B2 /* SearchPlaceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceTableViewController.swift; sourceTree = "<group>"; };
+		5F32B94E27441348006C0BBD /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		5F50725A273D54A200C2981D /* RemotePlaceLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePlaceLoader.swift; sourceTree = "<group>"; };
 		5F50725D273D55CF00C2981D /* RootCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCodable.swift; sourceTree = "<group>"; };
 		5F50725F273D55E200C2981D /* PlaceCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCodable.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 		5F250241273EE80B007D04B2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5F32B94D2744133A006C0BBD /* Helpers */,
 				5F507269273D57C200C2981D /* PlaceView.swift */,
 				5F50726B273D57DE00C2981D /* PlaceView.xib */,
 				5F50726E273D89EF00C2981D /* PlaceTableViewCell.swift */,
@@ -196,6 +199,14 @@
 				5F5D049B27433585004CE963 /* Controllers */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		5F32B94D2744133A006C0BBD /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5F32B94E27441348006C0BBD /* UIView+Layout.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		5F507259273D548700C2981D /* API */ = {
@@ -482,6 +493,7 @@
 				5F5D049A2743356D004CE963 /* SearchPlaceComposer.swift in Sources */,
 				5FEE527E273C068D002C6A36 /* PriceLevel.swift in Sources */,
 				5FEE5278273C02BF002C6A36 /* PlaceLoader.swift in Sources */,
+				5F32B94F27441348006C0BBD /* UIView+Layout.swift in Sources */,
 				5F50726A273D57C200C2981D /* PlaceView.swift in Sources */,
 				5F507262273D55F700C2981D /* GeometryCodable.swift in Sources */,
 				5FF3384A273E2799002D28F0 /* URLSessionHTTPClient.swift in Sources */,
