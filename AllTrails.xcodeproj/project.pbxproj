@@ -121,6 +121,8 @@
 		5F250241273EE80B007D04B2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5F507269273D57C200C2981D /* PlaceView.swift */,
+				5F50726B273D57DE00C2981D /* PlaceView.xib */,
 				5F50726E273D89EF00C2981D /* PlaceTableViewCell.swift */,
 				5F50726F273D89EF00C2981D /* PlaceTableViewCell.xib */,
 			);
@@ -211,9 +213,9 @@
 		5F507267273D574500C2981D /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				5F507268273D575F00C2981D /* Shared */,
 				5F25025A2740157A007D04B2 /* Search */,
 				5F250250273F089C007D04B2 /* RootView */,
-				5F507268273D575F00C2981D /* Shared */,
 				5F50726D273D89CC00C2981D /* Places Table View */,
 				5FEE524C273BFF88002C6A36 /* Main.storyboard */,
 			);
@@ -223,8 +225,8 @@
 		5F507268273D575F00C2981D /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				5F507269273D57C200C2981D /* PlaceView.swift */,
-				5F50726B273D57DE00C2981D /* PlaceView.xib */,
+				5F250241273EE80B007D04B2 /* Views */,
+				5F250242273EE818007D04B2 /* Controllers */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -233,8 +235,6 @@
 			isa = PBXGroup;
 			children = (
 				5F250253273F0B75007D04B2 /* Composer */,
-				5F250242273EE818007D04B2 /* Controllers */,
-				5F250241273EE80B007D04B2 /* Views */,
 			);
 			path = "Places Table View";
 			sourceTree = "<group>";
