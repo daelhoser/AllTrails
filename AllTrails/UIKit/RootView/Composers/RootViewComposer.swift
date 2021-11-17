@@ -14,7 +14,6 @@ final class RootViewComposer {
     static func compose(with loader: PlaceLoader, and dataLoader: DataLoader) -> RootViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let rootViewController = storyboard.instantiateInitialViewController() as! RootViewController
-        rootViewController.loader = MainQueueDispatcherDecorator(decoratee: loader)
         rootViewController.listViewController = PlaceViewComposer.compose(with: MainQueueDispatcherDecorator(decoratee: dataLoader))
         rootViewController.mapViewController = MapViewComposer.compose(loader: loader)
         rootViewController.onSearchButtonTapped = { [weak rootViewController] in

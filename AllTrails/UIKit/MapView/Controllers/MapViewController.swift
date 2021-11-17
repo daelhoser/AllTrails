@@ -28,8 +28,11 @@ final class MapViewController: UIViewController, CLLocationManagerDelegate, MKMa
     
     private let locationManager = CLLocationManager()
     private var task: RequestTask?
+    private var controllers = [MapAnnotationViewController]()
     
     var loader: PlaceLoader!
+    
+    var onUpdate: (([Place]) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,23 +123,18 @@ final class MapViewController: UIViewController, CLLocationManagerDelegate, MKMa
             switch result {
             case let .success(places):
                 self?.renderPlaces(places)
+                self?.onUpdate?(places)
             case .failure:
-                break
+                self?.onUpdate?([Place]())
             }
         })
     }
     
     private func renderPlaces(_ places: [Place]) {
-        let annotations = places.map { (place) -> MKPointAnnotation in
-            let c = CLLocationCoordinate2D(latitude: place.coordinates.latitude, longitude: place.coordinates.longitude)
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = c
-            annotation.title = place.name
-            
-            return annotation
-        }
-        
-        mapView.addAnnotations(annotations)
+        self.controllers.removeAll()
+        let controllers = places.map { MapAnnotationViewController(place: $0) }
+        self.controllers.append(contentsOf: controllers)
+        mapView.addAnnotations(controllers.map { $0.annotation })
     }
     
     private func latitudeDeltaToMeters(_ latitudeDelta: CLLocationDegrees) -> Int {
