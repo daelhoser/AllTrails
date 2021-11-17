@@ -18,6 +18,9 @@ final class MapViewController: UIViewController, CLLocationManagerDelegate, MKMa
     private var controllers = [MapAnnotationController]()
     
     var loader: PlaceLoader!
+    var centerPoint: LocationCoordinate {
+        return LocationCoordinate(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
+    }
     
     var onUpdate: (([Place]) -> Void)?
 

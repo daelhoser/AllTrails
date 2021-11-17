@@ -10,7 +10,7 @@ import Foundation
 final class SearchPlaceComposer {
     private init() {}
     
-    static func compose(with placeLoader: PlaceLoader, dataLoader: DataLoader) -> SearchPlaceTableViewController {
-        return SearchPlaceTableViewController(placeLoader: MainQueueDispatcherDecorator(decoratee: placeLoader), dataLoader: MainQueueDispatcherDecorator(decoratee: dataLoader))
+    static func compose(with placeLoader: PlaceLoader, dataLoader: DataLoader, centerCoordinate: LocationCoordinate) -> SearchPlaceTableViewController {
+        return SearchPlaceTableViewController(placeLoader: MainQueueDispatcherDecorator(decoratee: placeLoader), dataLoader: MainQueueDispatcherDecorator(decoratee: dataLoader), centerCoordinate: centerCoordinate)
     }
 }

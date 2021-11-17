@@ -15,13 +15,15 @@ protocol SearchPlaceDelegate: AnyObject {
 // TODO; constructor variables need to be included
 final class SearchPlaceTableViewController: PlacesTableViewController, UISearchResultsUpdating, UISearchControllerDelegate {
     private let searchController = UISearchController(searchResultsController: nil)
+    private let centerCoordinate: LocationCoordinate
     private let placeLoader: PlaceLoader
     private var task: RequestTask?
     
     weak var delegate: SearchPlaceDelegate?
     
-    init(placeLoader: PlaceLoader, dataLoader: DataLoader) {
+    init(placeLoader: PlaceLoader, dataLoader: DataLoader, centerCoordinate: LocationCoordinate) {
         self.placeLoader = placeLoader
+        self.centerCoordinate = centerCoordinate
         super.init(dataLoader: dataLoader)
     }
     
@@ -102,9 +104,6 @@ final class SearchPlaceTableViewController: PlacesTableViewController, UISearchR
     }
     
     private func request(with text: String) -> Request {
-        // TODO: Complete
-        let location = LocationCoordinate(latitude: -33.8670522, longitude: 151.1957362)
-
-        return Request(keyword: text, coordinates: location, radius: 1500)
+        return Request(keyword: text, coordinates: centerCoordinate, radius: 1500)
     }
 }
