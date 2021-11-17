@@ -18,6 +18,7 @@ final class MapViewController: UIViewController, CLLocationManagerDelegate, MKMa
     private var controllers = [MapAnnotationController]()
     
     var loader: PlaceLoader!
+    var imageLoader: DataLoader!
     var centerPoint: LocationCoordinate {
         return LocationCoordinate(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
     }
@@ -36,7 +37,7 @@ final class MapViewController: UIViewController, CLLocationManagerDelegate, MKMa
     func renderPlaces(_ places: [Place]) {
         self.controllers.removeAll()
         removeOldAnnotations()
-        let controllers = places.map { MapAnnotationController(place: $0) }
+        let controllers = places.map { MapAnnotationController(viewModel: PlaceViewModel(model: $0, imageLoader: imageLoader, imageTransformer: UIImage.init)) }
         self.controllers.append(contentsOf: controllers)
         mapView.addAnnotations(controllers.map { $0.annotation })
     }

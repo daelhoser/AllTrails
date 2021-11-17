@@ -11,11 +11,12 @@ import UIKit
 final class MapViewComposer {
     private init() {}
     
-    static func compose(loader: PlaceLoader) -> MapViewController {
+    static func compose(loader: PlaceLoader, imageLoader: DataLoader) -> MapViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         let mapViewController = storyboard.instantiateViewController(identifier: "MapViewController") as MapViewController
         mapViewController.loader = MainQueueDispatcherDecorator(decoratee: loader)
+        mapViewController.imageLoader = MainQueueDispatcherDecorator(decoratee: imageLoader)
         
         return mapViewController
     }
