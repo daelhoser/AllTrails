@@ -34,8 +34,10 @@ final class MapViewController: UIViewController, CLLocationManagerDelegate, MKMa
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.requestWhenInUseAuthorization()
+        }
     }
     
     // MARK: - CLLocationManagerDelegate
@@ -43,12 +45,16 @@ final class MapViewController: UIViewController, CLLocationManagerDelegate, MKMa
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
         case .authorizedAlways:
+            locationManager.startUpdatingHeading()
             navigateToUsersLocation()
         case .authorizedWhenInUse:
+            locationManager.startUpdatingHeading()
             navigateToUsersLocation()
         case .denied:
+            locationManager.stopUpdatingLocation()
             searchAroundCurrentLocation()
         case .restricted:
+            locationManager.stopUpdatingLocation()
             searchAroundCurrentLocation()
         case .notDetermined:
             break
