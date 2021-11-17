@@ -68,6 +68,33 @@ final class MapViewController: UIViewController, CLLocationManagerDelegate, MKMa
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         searchAroundCurrentLocation()
     }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard annotation is MKPointAnnotation else { return nil }
+
+        let annotationIdentifier = "cell"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier)
+
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+            annotationView!.canShowCallout = true
+        }
+        else {
+            annotationView!.annotation = annotation
+        }
+
+        annotationView!.image = UIImage(named: "static")
+
+        return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        view.image = UIImage(named: "active")
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        view.image = UIImage(named: "clicked")
+    }
             
     // MARK: - Helper Methods
     
@@ -120,3 +147,5 @@ final class MapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         return Int(temp)
     }
 }
+
+
