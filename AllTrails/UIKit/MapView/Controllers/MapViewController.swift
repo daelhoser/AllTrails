@@ -8,20 +8,6 @@
 import UIKit
 import MapKit
 
-protocol PlacesMapViewDelegate: AnyObject {
-    func userMovedMapView()
-}
-
-final class PlacesMapView: MKMapView {
-    weak var userMovementDelegate: PlacesMapViewDelegate?
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesMoved(touches, with: event)
-        
-        userMovementDelegate?.userMovedMapView()
-    }
-}
-
 final class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, PlacesMapViewDelegate {
     @IBOutlet private weak var mapView: PlacesMapView!
 

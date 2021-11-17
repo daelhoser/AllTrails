@@ -35,6 +35,7 @@
 		5F5D049E274335F0004CE963 /* SearchPlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5D049D274335F0004CE963 /* SearchPlaceViewModel.swift */; };
 		5F5D04A227433753004CE963 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5D04A127433753004CE963 /* MapKit.framework */; };
 		5F5D04A5274337CF004CE963 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5D04A4274337CF004CE963 /* MapViewController.swift */; };
+		5FDC7B602745CBFC0090583B /* PlacesMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDC7B5F2745CBFC0090583B /* PlacesMapView.swift */; };
 		5FEE5247273BFF88002C6A36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE5246273BFF88002C6A36 /* AppDelegate.swift */; };
 		5FEE5249273BFF88002C6A36 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE5248273BFF88002C6A36 /* SceneDelegate.swift */; };
 		5FEE524E273BFF88002C6A36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FEE524C273BFF88002C6A36 /* Main.storyboard */; };
@@ -89,6 +90,7 @@
 		5F5D049D274335F0004CE963 /* SearchPlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceViewModel.swift; sourceTree = "<group>"; };
 		5F5D04A127433753004CE963 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5F5D04A4274337CF004CE963 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		5FDC7B5F2745CBFC0090583B /* PlacesMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesMapView.swift; sourceTree = "<group>"; };
 		5FEE5243273BFF88002C6A36 /* AllTrails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllTrails.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FEE5246273BFF88002C6A36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5FEE5248273BFF88002C6A36 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 		5F5D049F274336EB004CE963 /* MapView */ = {
 			isa = PBXGroup;
 			children = (
+				5FDC7B5E2745CBEC0090583B /* View */,
 				5F52CE8E2744BF1A0041811E /* Model */,
 				5F52CE8B2744BEE00041811E /* Composers */,
 				5F5D04A32743375C004CE963 /* Controllers */,
@@ -333,6 +336,14 @@
 				5F52CE912744BFBC0041811E /* MapAnnotationController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		5FDC7B5E2745CBEC0090583B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5FDC7B5F2745CBFC0090583B /* PlacesMapView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		5FEE523A273BFF88002C6A36 = {
@@ -512,6 +523,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FDC7B602745CBFC0090583B /* PlacesMapView.swift in Sources */,
 				5F25024D273EFA57007D04B2 /* HTTPURLResponse+StatusCode.swift in Sources */,
 				5F250246273EF5B4007D04B2 /* DataLoader.swift in Sources */,
 				5F25025927400EA0007D04B2 /* RootViewComposer.swift in Sources */,
