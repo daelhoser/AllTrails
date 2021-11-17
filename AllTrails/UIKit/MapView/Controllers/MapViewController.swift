@@ -8,19 +8,6 @@
 import UIKit
 import MapKit
 
-final class MapViewComposer {
-    private init() {}
-    
-    static func compose(loader: PlaceLoader) -> MapViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        let mapViewController = storyboard.instantiateViewController(identifier: "MapViewController") as MapViewController
-        mapViewController.loader = MainQueueDispatcherDecorator(decoratee: loader)
-        
-        return mapViewController
-    }
-}
-
 final class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     @IBOutlet private weak var mapView: MKMapView!
 
@@ -28,7 +15,7 @@ final class MapViewController: UIViewController, CLLocationManagerDelegate, MKMa
     
     private let locationManager = CLLocationManager()
     private var task: RequestTask?
-    private var controllers = [MapAnnotationViewController]()
+    private var controllers = [MapAnnotationController]()
     
     var loader: PlaceLoader!
     
@@ -75,31 +62,32 @@ final class MapViewController: UIViewController, CLLocationManagerDelegate, MKMa
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard annotation is MKPointAnnotation else { return nil }
 
-        let annotationIdentifier = "cell"
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier)
+        let controller = controller(for: annotation)
 
-        if annotationView == nil {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
-            annotationView!.canShowCallout = true
-        }
-        else {
-            annotationView!.annotation = annotation
-        }
-
-        annotationView!.image = UIImage(named: "static")
-
-        return annotationView
+        return controller?.mapView(mapView, viewFor: annotation)
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        view.image = UIImage(named: "active")
+        let controller = controller(for: view.annotation)
+
+        controller?.mapView(mapView, didSelect: view)
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-        view.image = UIImage(named: "clicked")
+        let controller = controller(for: view.annotation)
+
+        controller?.mapView(mapView, didDeselect: view)
     }
             
     // MARK: - Helper Methods
+    
+    private func controller(for annotation: MKAnnotation?) -> MapAnnotationController? {
+        guard let annotation = annotation as? PlaceAnnotation else {
+            return nil
+        }
+        
+        return controllers.first { $0.annotation.placeId == annotation.placeId }
+    }
     
     private func navigateToUsersLocation () {
         if let location = locationManager.location?.coordinate {
@@ -132,7 +120,7 @@ final class MapViewController: UIViewController, CLLocationManagerDelegate, MKMa
     
     private func renderPlaces(_ places: [Place]) {
         self.controllers.removeAll()
-        let controllers = places.map { MapAnnotationViewController(place: $0) }
+        let controllers = places.map { MapAnnotationController(place: $0) }
         self.controllers.append(contentsOf: controllers)
         mapView.addAnnotations(controllers.map { $0.annotation })
     }
@@ -145,5 +133,4 @@ final class MapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         return Int(temp)
     }
 }
-
 
