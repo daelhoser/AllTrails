@@ -8,15 +8,30 @@
 import UIKit
 import MapKit
 
-final class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
-    @IBOutlet private weak var mapView: MKMapView!
+protocol PlacesMapViewDelegate: AnyObject {
+    func userMovedMapView()
+}
+
+final class PlacesMapView: MKMapView {
+    weak var userMovementDelegate: PlacesMapViewDelegate?
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesMoved(touches, with: event)
+        
+        userMovementDelegate?.userMovedMapView()
+    }
+}
+
+final class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, PlacesMapViewDelegate {
+    @IBOutlet private weak var mapView: PlacesMapView!
 
     private static let metersInOneDegreeLatitudeDelta: Double = 271979
     
     private let locationManager = CLLocationManager()
     private var task: RequestTask?
     private var controllers = [MapAnnotationController]()
-    
+    private var allowSearchOnRegionChange = false
+
     var loader: PlaceLoader!
     var imageLoader: DataLoader!
     var centerPoint: LocationCoordinate {
@@ -27,6 +42,8 @@ final class MapViewController: UIViewController, CLLocationManagerDelegate, MKMa
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mapView.userMovementDelegate = self
 
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
@@ -68,7 +85,10 @@ final class MapViewController: UIViewController, CLLocationManagerDelegate, MKMa
     // MARK: - MKMapViewDelegate
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        searchAroundCurrentLocation()
+        if allowSearchOnRegionChange {
+            allowSearchOnRegionChange = false
+            searchAroundCurrentLocation()
+        }
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -90,6 +110,13 @@ final class MapViewController: UIViewController, CLLocationManagerDelegate, MKMa
 
         controller?.mapView(mapView, didDeselect: view)
     }
+    
+    // MARK: - PlacesMapViewDelegate
+        
+    func userMovedMapView() {
+        allowSearchOnRegionChange = true
+    }
+
             
     // MARK: - Helper Methods
     
@@ -108,6 +135,8 @@ final class MapViewController: UIViewController, CLLocationManagerDelegate, MKMa
     
     private func navigateToUsersLocation () {
         if let location = locationManager.location?.coordinate {
+            allowSearchOnRegionChange = true
+            
             let region = MKCoordinateRegion(center: location, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)) // 1 delta = 69 miles, 0.1 delta = 6.9 miles
             mapView.setRegion(region, animated: true)
         }
