@@ -16,10 +16,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdn-Zt-sai" userLabel="Map Container View">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gXy-we-itB" userLabel="List Container View">
                                 <rect key="frame" x="0.0" y="158" width="414" height="738"/>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gXy-we-itB" userLabel="List Container View">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdn-Zt-sai" userLabel="Map Container View">
                                 <rect key="frame" x="0.0" y="158" width="414" height="738"/>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vHF-g3-voW" userLabel="TopContainerView">
@@ -146,6 +146,9 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qKA-f0-pFc">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <connections>
+                                    <outlet property="delegate" destination="z9m-ZA-lIc" id="C3X-7C-M7U"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9PJ-ei-CBy"/>
@@ -157,6 +160,9 @@
                             <constraint firstItem="qKA-f0-pFc" firstAttribute="top" secondItem="9PJ-ei-CBy" secondAttribute="top" id="YO3-vX-jOp"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="qKA-f0-pFc" id="jlm-8J-eTy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YG3-jl-hOv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
