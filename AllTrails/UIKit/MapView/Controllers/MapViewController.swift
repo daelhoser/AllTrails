@@ -33,6 +33,14 @@ final class MapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         }
     }
     
+    func renderPlaces(_ places: [Place]) {
+        self.controllers.removeAll()
+        removeOldAnnotations()
+        let controllers = places.map { MapAnnotationController(place: $0) }
+        self.controllers.append(contentsOf: controllers)
+        mapView.addAnnotations(controllers.map { $0.annotation })
+    }
+
     // MARK: - CLLocationManagerDelegate
 
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
@@ -84,6 +92,11 @@ final class MapViewController: UIViewController, CLLocationManagerDelegate, MKMa
             
     // MARK: - Helper Methods
     
+    private func removeOldAnnotations() {
+        let currentAnnotations = mapView.annotations
+        mapView.removeAnnotations(currentAnnotations)
+    }
+    
     private func controller(for annotation: MKAnnotation?) -> MapAnnotationController? {
         guard let annotation = annotation as? PlaceAnnotation else {
             return nil
@@ -120,14 +133,7 @@ final class MapViewController: UIViewController, CLLocationManagerDelegate, MKMa
             }
         })
     }
-    
-    private func renderPlaces(_ places: [Place]) {
-        self.controllers.removeAll()
-        let controllers = places.map { MapAnnotationController(place: $0) }
-        self.controllers.append(contentsOf: controllers)
-        mapView.addAnnotations(controllers.map { $0.annotation })
-    }
-    
+        
     private func latitudeDeltaToMeters(_ latitudeDelta: CLLocationDegrees) -> Int {
         // 1 degree latitude = 169 miles = 271979 meters
         

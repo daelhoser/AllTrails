@@ -69,6 +69,7 @@ extension RootViewController: SearchPlaceDelegate {
         viewController.dismiss(animated: true) {
             self.textField.text = place.name
             self.listViewController.update(with: [place])
+            self.mapViewController.renderPlaces([place])
         }
     }
     
