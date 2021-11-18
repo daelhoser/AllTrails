@@ -60,6 +60,7 @@ final class MapAnnotationController: NSObject, MKMapViewDelegate {
     private func createPlaceView() -> PlaceView {
         let nib = UINib(nibName: "PlaceView", bundle: nil)
         let placeView = nib.instantiate(withOwner: nil, options: nil).first as! PlaceView
+        placeView.removePadding()
         placeView.name.text = viewModel.name
         placeView.numberOfRatings.text = viewModel.numberOfRatings
         placeView.priceAndDetail.text = viewModel.priceAndSupportingText

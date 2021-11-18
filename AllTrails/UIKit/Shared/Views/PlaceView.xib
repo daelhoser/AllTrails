@@ -52,7 +52,7 @@
                                         </label>
                                     </subviews>
                                 </stackView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$$ • open 24hrs" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hma-q6-R5q">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$$ • open 24hrs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hma-q6-R5q">
                                     <rect key="frame" x="0.0" y="39.5" width="350" height="14.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" red="0.31372549019607843" green="0.31372549019607843" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -88,12 +88,16 @@
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="bottomConstraint" destination="uSd-nL-RDh" id="Y8Q-3T-XgF"/>
                 <outlet property="heartButton" destination="njt-Pw-aTj" id="tDJ-3P-As2"/>
                 <outlet property="iconImageView" destination="2EH-vp-1m8" id="4cJ-1h-03i"/>
+                <outlet property="leadingConstraint" destination="DYd-yk-aum" id="Hob-eY-nIf"/>
                 <outlet property="name" destination="6WM-Wi-xCM" id="vn5-KO-FqE"/>
                 <outlet property="numberOfRatings" destination="gpg-9v-4Vh" id="hiF-qs-5v0"/>
                 <outlet property="priceAndDetail" destination="Hma-q6-R5q" id="IsD-xl-D2Q"/>
                 <outlet property="ratingImageView" destination="I61-m2-suB" id="WRA-RF-2Um"/>
+                <outlet property="topConstraint" destination="pRu-sO-CjW" id="LMG-LG-h1x"/>
+                <outlet property="trailingConstraint" destination="Rci-Fi-Hjs" id="BfQ-E6-rh0"/>
             </connections>
             <point key="canvasLocation" x="15.942028985507248" y="-77.678571428571431"/>
         </view>
