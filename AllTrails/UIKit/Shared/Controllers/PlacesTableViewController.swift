@@ -10,9 +10,13 @@ import UIKit
 class PlacesTableViewController: UITableViewController, UITableViewDataSourcePrefetching {
     private(set) var model = [PlaceCellController]()
     private let dataLoader: DataLoader
-    
-    init(dataLoader: DataLoader) {
+    private let favoritesLoader: FavoritePlaceLoader
+    private let favoriteCache: FavoritePlaceCache
+
+    init(dataLoader: DataLoader, favoritesLoader: FavoritePlaceLoader, favoritesCache: FavoritePlaceCache) {
         self.dataLoader = dataLoader
+        self.favoritesLoader = favoritesLoader
+        self.favoriteCache = favoritesCache
         
         super.init(nibName: nil, bundle: nil)
         
@@ -28,6 +32,12 @@ class PlacesTableViewController: UITableViewController, UITableViewDataSourcePre
 
         tableView.prefetchDataSource = self
         tableView.register(PlaceTableViewCell.self, forCellReuseIdentifier: PlaceTableViewCell.identifier)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        reloadViewAfterFlipAnimation()
     }
 
     // MARK: - Table view data source
@@ -52,11 +62,17 @@ class PlacesTableViewController: UITableViewController, UITableViewDataSourcePre
     }
 
     func update(with places: [Place]) {
-        let viewModels = places.map { PlaceViewModel<UIImage>.init(model: $0, imageLoader: dataLoader) { UIImage(data: $0) } }
+        let viewModels = places.map { PlaceViewModel<UIImage>.init(model: $0, imageLoader: dataLoader, favoritesLoader: favoritesLoader, favoritesCache: favoriteCache) { UIImage(data: $0) } }
         let controllers = viewModels.map { PlaceCellController.init(viewModel: $0) }
         model.removeAll()
         model.append(contentsOf: controllers)
         
         tableView.reloadData()
     }
+    
+    // MARK: - HelperMethods
+    private func reloadViewAfterFlipAnimation() {
+        tableView.reloadData()
+    }
+
 }

@@ -27,8 +27,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let client = URLSessionHTTPClient(session: .shared)
         let placeLoader = RemotePlaceLoader(client: client)
         let dataLoader = RemoteDataLoader(client: client)
+        let favorites = LocalFavoritePlaceCache()
         
-        return RootViewComposer.compose(with: placeLoader, and: dataLoader)
+        return RootViewComposer.compose(with: placeLoader, and: dataLoader, favoritesLoader: favorites, favoritesCache: favorites)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

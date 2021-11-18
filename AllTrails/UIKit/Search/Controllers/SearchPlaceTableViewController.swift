@@ -21,10 +21,10 @@ final class SearchPlaceTableViewController: PlacesTableViewController, UISearchR
     
     weak var delegate: SearchPlaceDelegate?
     
-    init(placeLoader: PlaceLoader, dataLoader: DataLoader, centerCoordinate: LocationCoordinate) {
+    init(placeLoader: PlaceLoader, dataLoader: DataLoader, centerCoordinate: LocationCoordinate, favoritesLoader: FavoritePlaceLoader, favoritesCache: FavoritePlaceCache) {
         self.placeLoader = placeLoader
         self.centerCoordinate = centerCoordinate
-        super.init(dataLoader: dataLoader)
+        super.init(dataLoader: dataLoader, favoritesLoader: favoritesLoader, favoritesCache: favoritesCache)
     }
     
     required init?(coder: NSCoder) {

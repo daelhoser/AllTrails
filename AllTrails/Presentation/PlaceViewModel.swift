@@ -10,8 +10,10 @@ import Foundation
 final class PlaceViewModel<Image> {
     let model: Place
     private let imageLoader: DataLoader
-    private var task: RequestTask?
+    private var imageLoaderTask: RequestTask?
     private let imageTransformer: (Data) -> Image?
+    private let favoritesLoader: FavoritePlaceLoader
+    private let favoriteCache: FavoritePlaceCache
     var name: String {
         return model.name
     }
@@ -34,18 +36,24 @@ final class PlaceViewModel<Image> {
         return "\(temp) • \(model.vicinity)"
     }
     
+    var isFavorited: Bool {
+        favoritesLoader.isFavorited(placeId: model.id)
+    }
+    
     var onImageCompletion: ((Image?) -> Void)?
     
-    init(model: Place, imageLoader: DataLoader, imageTransformer: @escaping (Data) -> Image?) {
+    init(model: Place, imageLoader: DataLoader, favoritesLoader: FavoritePlaceLoader, favoritesCache: FavoritePlaceCache, imageTransformer: @escaping (Data) -> Image?) {
         self.model = model
         self.imageLoader = imageLoader
+        self.favoritesLoader = favoritesLoader
+        self.favoriteCache = favoritesCache
         self.imageTransformer = imageTransformer
     }
     
     func loadImage() {
-        guard task == nil else { return }
+        guard imageLoaderTask == nil else { return }
         
-        task = imageLoader.request(from: model.iconURL, completion: { [weak self] (result) in
+        imageLoaderTask = imageLoader.request(from: model.iconURL, completion: { [weak self] (result) in
             guard let self = self else { return }
             
             if let data = try? result.get() {
@@ -58,7 +66,15 @@ final class PlaceViewModel<Image> {
     }
     
     func cancelImageLoad() {
-        task?.cancel()
-        task = nil
+        imageLoaderTask?.cancel()
+        imageLoaderTask = nil
+    }
+    
+    func favorite() {
+        favoriteCache.save(placeId: model.id)
+    }
+    
+    func unfavorite() {
+        favoriteCache.delete(placeId: model.id)
     }
 }

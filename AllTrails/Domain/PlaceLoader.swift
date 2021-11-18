@@ -12,3 +12,13 @@ protocol PlaceLoader {
     
     func load(with request: Request, completion: @escaping (Result) -> Void) -> RequestTask
 }
+
+
+protocol FavoritePlaceCache {
+    func save(placeId: String)
+    func delete(placeId: String)
+}
+
+protocol FavoritePlaceLoader {
+    func isFavorited(placeId: String) -> Bool
+}

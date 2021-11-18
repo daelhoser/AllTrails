@@ -36,6 +36,7 @@
 		5F5D04A227433753004CE963 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F5D04A127433753004CE963 /* MapKit.framework */; };
 		5F5D04A5274337CF004CE963 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5D04A4274337CF004CE963 /* MapViewController.swift */; };
 		5FDC7B602745CBFC0090583B /* PlacesMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDC7B5F2745CBFC0090583B /* PlacesMapView.swift */; };
+		5FDC7B642745D4700090583B /* LocalFavoritePlaceCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDC7B632745D4700090583B /* LocalFavoritePlaceCache.swift */; };
 		5FEE5247273BFF88002C6A36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE5246273BFF88002C6A36 /* AppDelegate.swift */; };
 		5FEE5249273BFF88002C6A36 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE5248273BFF88002C6A36 /* SceneDelegate.swift */; };
 		5FEE524E273BFF88002C6A36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FEE524C273BFF88002C6A36 /* Main.storyboard */; };
@@ -91,6 +92,7 @@
 		5F5D04A127433753004CE963 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5F5D04A4274337CF004CE963 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		5FDC7B5F2745CBFC0090583B /* PlacesMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesMapView.swift; sourceTree = "<group>"; };
+		5FDC7B632745D4700090583B /* LocalFavoritePlaceCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFavoritePlaceCache.swift; sourceTree = "<group>"; };
 		5FEE5243273BFF88002C6A36 /* AllTrails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllTrails.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FEE5246273BFF88002C6A36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5FEE5248273BFF88002C6A36 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -346,6 +348,22 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		5FDC7B612745CEF10090583B /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				5FDC7B622745CEFF0090583B /* Favorite Places */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		5FDC7B622745CEFF0090583B /* Favorite Places */ = {
+			isa = PBXGroup;
+			children = (
+				5FDC7B632745D4700090583B /* LocalFavoritePlaceCache.swift */,
+			);
+			path = "Favorite Places";
+			sourceTree = "<group>";
+		};
 		5FEE523A273BFF88002C6A36 = {
 			isa = PBXGroup;
 			children = (
@@ -368,6 +386,7 @@
 		5FEE5245273BFF88002C6A36 /* AllTrails */ = {
 			isa = PBXGroup;
 			children = (
+				5FDC7B612745CEF10090583B /* Cache */,
 				5F25023E273EE7C2007D04B2 /* Presentation */,
 				5F507259273D548700C2981D /* API */,
 				5FEE5276273C0297002C6A36 /* Domain */,
@@ -535,6 +554,7 @@
 				5F507262273D55F700C2981D /* GeometryCodable.swift in Sources */,
 				5FF3384A273E2799002D28F0 /* URLSessionHTTPClient.swift in Sources */,
 				5FEE5280273C069E002C6A36 /* Place.swift in Sources */,
+				5FDC7B642745D4700090583B /* LocalFavoritePlaceCache.swift in Sources */,
 				5F507266273D569C00C2981D /* PlacesTableViewController.swift in Sources */,
 				5F50725B273D54A200C2981D /* RemotePlaceLoader.swift in Sources */,
 				5F52CE902744BF270041811E /* PlaceAnnotation.swift in Sources */,

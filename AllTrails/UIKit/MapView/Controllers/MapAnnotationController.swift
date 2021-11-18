@@ -64,6 +64,7 @@ final class MapAnnotationController: NSObject, MKMapViewDelegate {
         placeView.numberOfRatings.text = viewModel.numberOfRatings
         placeView.priceAndDetail.text = viewModel.priceAndSupportingText
         placeView.ratingImageView.image = imageFor(rating: viewModel.rating)
+        placeView.heartButton.isHidden = true
         
         viewModel.onImageCompletion = { [weak placeView] (image) in
             placeView?.iconImageView.image = image

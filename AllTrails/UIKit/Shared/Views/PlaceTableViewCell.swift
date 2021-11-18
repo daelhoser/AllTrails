@@ -42,6 +42,18 @@ final class PlaceTableViewCell: UITableViewCell {
             placeView.priceAndDetail.text = newValue
         }
     }
+    
+    var liked: Bool {
+        get {
+            placeView.heartButton.isSelected
+        }
+        set {
+            placeView.heartButton.isSelected = newValue
+        }
+    }
+    
+    var onHeartButtonTapped: ((_ liked: Bool) -> Void)?
+
 
     func setStarRating(with image: UIImage?) {
         placeView.ratingImageView.image = image
@@ -62,6 +74,8 @@ final class PlaceTableViewCell: UITableViewCell {
         placeView.clipsToBounds = true
         placeView.layer.borderColor = #colorLiteral(red: 0.9019607843, green: 0.9019607843, blue: 0.9019607843, alpha: 1).cgColor
         placeView.layer.borderWidth = 1.0
+        
+        placeView.onHeartButtonTapped = {[weak self] in self?.onHeartButtonTapped?($0)}
     }
     
     required init?(coder: NSCoder) {

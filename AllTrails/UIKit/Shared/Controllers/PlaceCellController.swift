@@ -30,10 +30,19 @@ final class PlaceCellController: NSObject, UITableViewDataSource {
         cell?.name = viewModel.name
         cell?.numberOfRatings = viewModel.numberOfRatings
         cell?.priceAndDetail = viewModel.priceAndSupportingText
+        cell?.liked = viewModel.isFavorited
         updateCellStarRating()
         
         viewModel.onImageCompletion = { [weak self] image in
             self?.cell?.setPlaceImage(image)
+        }
+        
+        cell?.onHeartButtonTapped = { [weak viewModel] (liked) in
+            if liked {
+                viewModel?.favorite()
+            } else {
+                viewModel?.unfavorite()
+            }
         }
         
         viewModel.loadImage()
