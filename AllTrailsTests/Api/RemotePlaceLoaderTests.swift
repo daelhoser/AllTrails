@@ -118,7 +118,7 @@ class RemotePlaceLoaderTests: XCTestCase {
     }
     
     private func anyRequest() -> Request {
-        Request(keyword: nil, coordinates: LocationCoordinate(latitude: 0, longitude: 0), radius: 0, type: "a string")
+        Request(keyword: nil, coordinates: LocationCoordinate(latitude: 0, longitude: 0), radius: 0)
     }
     
     private func expect(when sut: PlaceLoader, toCompleteWith expectedResult: RemotePlaceLoader.Result, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
